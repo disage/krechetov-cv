@@ -1,0 +1,27 @@
+.light-circle-image {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%); /* центрируем по горизонтали */
+
+  width: 80vw;
+  aspect-ratio: 1/1;
+  background: radial-gradient(
+    70.71% 70.71% at 50% 50%,
+    rgba(144, 172, 255, 0.2) 0%,
+    rgba(144, 172, 255, 0) 70%,
+    rgba(144, 172, 255, 0) 100%
+  );
+  border-radius: 50%; /* круг */
+  z-index: 1;
+}
+
+.wrapper {
+  position: relative;
+  // overflow: hidden;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

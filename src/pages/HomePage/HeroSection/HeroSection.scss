@@ -1,0 +1,25 @@
+.hero-section {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  h1 {
+    font-size: 6rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+
+    .highlighted-name {
+      font-weight: 700;
+      font-size: 6rem;
+      background: linear-gradient(90deg, #f65661 53.88%, #9566a2 77.24%, #2979ec 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+  }
+
+  p {
+    font-size: 1.5rem;
+    margin-bottom: 200px;
+  }
+}
