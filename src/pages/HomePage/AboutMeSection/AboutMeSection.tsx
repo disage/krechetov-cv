@@ -11,7 +11,7 @@ const AboutMeSection = () => {
       </p>
       <p>
         I enjoy turning ideas into clean, efficient code and always strive to create
-        <span className='highlighted'>smooth digital experiences</span>.
+        <span className='highlighted'> smooth digital experiences</span>.
       </p>
       <Button children='Explore more' variant='outline' href='#' withArrow />
     </section>

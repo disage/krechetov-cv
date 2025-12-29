@@ -11,4 +11,5 @@ export default defineConfig({
       },
     }),
   ],
+  // base: '/krechetov-cv-2025/',
 });

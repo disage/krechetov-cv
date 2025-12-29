@@ -8,6 +8,7 @@ interface ColaborateModalProps {
   children: ReactNode;
 }
 
+
 const ColaborateModal: React.FC<ColaborateModalProps> = ({ isOpen, onClose, children }) => {
   const [show, setShow] = useState(false);
   const [animState, setAnimState] = useState<'opening' | 'open' | 'closing'>('opening');

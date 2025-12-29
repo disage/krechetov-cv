@@ -1,0 +1,190 @@
+.journey-section {
+  padding: 100px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+
+  .journey-container {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .journey-header {
+    text-align: center;
+    margin-bottom: 50px;
+
+    .journey-title {
+      font-size: 3rem;
+      font-weight: 500;
+      margin-bottom: 20px;
+      color: #fff;
+
+      .highlight {
+        color: #90acff;
+      }
+    }
+
+    .journey-subtitle {
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.6);
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+  }
+
+  .journey-tabs-container {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    margin-bottom: 20px;
+
+    .journey-tabs {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 4px;
+      display: flex;
+      gap: 4px;
+
+      .journey-tab {
+        padding: 8px 16px;
+        border-radius: 8px;
+        font-size: 0.9rem;
+        transition: all 0.3s ease;
+        color: rgba(255, 255, 255, 0.5);
+
+        &.active {
+          background: rgba(255, 255, 255, 0.1);
+          color: #fff;
+        }
+
+        &:hover {
+          color: #fff;
+        }
+      }
+    }
+  }
+
+  .journey-content {
+    width: 100%;
+
+    .journey-card {
+      background: linear-gradient(
+          112.57deg,
+          rgba(17, 18, 20, 0.6) 4.87%,
+          rgba(12, 13, 15, 0.72) 75.88%
+        ),
+        url('/blue-element.png');
+      background-repeat: no-repeat;
+      background-position: center right;
+      background-size: cover, 800px auto;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      box-shadow: inset 0px 1px 1px 1px rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(5px);
+      border-radius: 24px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .journey-item {
+      padding: 40px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      .journey-info {
+        display: grid;
+        grid-template-columns: 250px auto auto;
+        gap: 30px;
+        align-items: start;
+
+        @media (max-width: 900px) {
+          grid-template-columns: 1fr;
+          gap: 15px;
+        }
+      }
+
+      .journey-item-header {
+        .journey-item-title {
+          font-size: 1.8rem;
+          font-weight: 500;
+          margin-top: 0;
+          margin-bottom: 10px;
+          text-decoration: underline;
+          text-underline-offset: 8px;
+        }
+
+        .journey-item-role {
+          font-size: 1rem;
+          color: #fff;
+          margin-bottom: 5px;
+        }
+
+        .journey-item-period {
+          font-size: 0.9rem;
+          color: rgba(255, 255, 255, 0.5);
+        }
+      }
+
+      .journey-item-description {
+        font-size: 0.95rem;
+        line-height: 1.6;
+        color: rgba(255, 255, 255, 0.8);
+        max-width: 500px;
+
+        p {
+          margin-top: 0;
+          margin-bottom: 10px;
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
+      }
+
+      .journey-item-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: flex-end;
+        align-content: flex-start;
+        width: 200px;
+
+        @media (max-width: 900px) {
+          justify-content: flex-start;
+        }
+
+        .tag {
+          background: rgba(255, 255, 255, 0.08);
+          padding: 6px 16px;
+          border-radius: 8px;
+          font-size: 0.85rem;
+          color: rgba(255, 255, 255, 0.7);
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .journey-section {
+    padding: 60px 0;
+
+    .journey-header .journey-title {
+      font-size: 2.2rem;
+    }
+
+    .journey-item {
+      padding: 30px 20px;
+    }
+  }
+}

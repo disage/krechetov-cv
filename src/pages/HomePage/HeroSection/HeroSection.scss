@@ -23,3 +23,10 @@
     margin-bottom: 200px;
   }
 }
+
+@media (max-width: 600px) {
+  h1,
+  .highlighted-name {
+    font-size: 4rem !important;
+  }
+}

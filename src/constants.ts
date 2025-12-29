@@ -96,3 +96,43 @@ export const servicesData = [
     description: ['Product roadmap', 'Technical audit', 'Team mentoring'],
   },
 ];
+
+export const experienceData = [
+  {
+    company: 'TalentInsight',
+    position: 'Web Developer',
+    period: 'Jun 2025 - Now',
+    description: [
+      'Built and maintained a corporate website with LMS and automation features. Developed an internal CRM with automated workflows and invoicing using AWS serverless architecture.',
+    ],
+    tags: ['WEB Dev', 'CRM', 'Design'],
+  },
+  {
+    company: 'Freelance',
+    position: 'Web Developer',
+    period: 'Dec 2023 - Apr 2025',
+    description: [
+      'Developed business websites and web applications from concept to deployment. Built Telegram bots with Python and implemented SEO strategies to improve online visibility.',
+    ],
+    tags: ['WEB Dev', 'SEO', 'Bots', 'Design'],
+  },
+  {
+    company: 'Noer Agency',
+    position: 'Frontend Developer',
+    period: 'Nov 2021 - Sep 2023',
+    description: [
+      'Built scalable LMS solutions and contributed to a large enterprise information platform with high performance and reliability requirements. Expanded a Storybook component library and implemented accessibility standards',
+    ],
+    tags: ['WEB Dev'],
+  },
+];
+
+export const educationData = [
+  {
+    institution: 'KROK University',
+    degree: 'Junior Specialist Degree in Software Engineering',
+    period: '2017 - 2021',
+    description: ['Specialized in development of web applications and databases.'],
+    tags: ['Kyiv, Ukraine'],
+  },
+];

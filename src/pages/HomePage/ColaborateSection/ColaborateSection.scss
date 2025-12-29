@@ -43,3 +43,9 @@
     }
   }
 }
+
+@media (max-width: 600px) {
+  .colaborate-section-action-bg {
+    background-image: url('/colaborate-image-mobile.png') !important;
+  }
+}
