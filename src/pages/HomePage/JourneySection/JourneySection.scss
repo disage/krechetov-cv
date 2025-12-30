@@ -7,21 +7,28 @@
 
   .journey-container {
     width: 100%;
-    max-width: 1200px;
+    max-width: 1000px;
     display: flex;
     flex-direction: column;
+    align-items: flex-start; /* Align header to left? User said "left column list", usually implies a dashboard look */
+    /* Reseting align items to center for the header part, handle content layout separately */
     align-items: center;
   }
 
   .journey-header {
     text-align: center;
-    margin-bottom: 50px;
+    margin-bottom: 60px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
     .journey-title {
-      font-size: 3rem;
+      font-size: 3.5rem;
       font-weight: 500;
       margin-bottom: 20px;
       color: #fff;
+      line-height: 1.1;
 
       .highlight {
         color: #90acff;
@@ -29,162 +36,177 @@
     }
 
     .journey-subtitle {
-      font-size: 1rem;
+      font-size: 1.1rem;
       color: rgba(255, 255, 255, 0.6);
-      max-width: 700px;
-      margin: 0 auto;
+      max-width: 600px;
+      margin: 0 auto 30px;
       line-height: 1.6;
     }
+
+
   }
 
-  .journey-tabs-container {
+  .journey-content {
     display: flex;
-    justify-content: flex-end;
     width: 100%;
-    margin-bottom: 20px;
+    gap: 60px;
+    align-items: flex-start;
 
-    .journey-tabs {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 12px;
-      padding: 4px;
+    @media (max-width: 768px) {
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    .journey-sidebar {
       display: flex;
-      gap: 4px;
+      flex-direction: column;
+      width: 250px;
+      flex-shrink: 0;
+      border-left: 2px solid rgba(255, 255, 255, 0.1);
 
-      .journey-tab {
-        padding: 8px 16px;
-        border-radius: 8px;
-        font-size: 0.9rem;
+      @media (max-width: 768px) {
+        width: 100%;
+        flex-direction: row;
+        overflow-x: auto;
+        border-left: none;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+        padding-bottom: 0;
+      }
+
+      .journey-sidebar-item {
+        padding: 15px 20px;
+        cursor: pointer;
         transition: all 0.3s ease;
+        position: relative;
         color: rgba(255, 255, 255, 0.5);
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
 
-        &.active {
-          background: rgba(255, 255, 255, 0.1);
-          color: #fff;
+        &::before {
+          content: '';
+          position: absolute;
+          left: -2px;
+          top: 0;
+          bottom: 0;
+          width: 2px;
+          background: #90acff;
+          transform: scaleY(0);
+          transition: transform 0.3s ease;
+        }
+
+        @media (max-width: 768px) {
+          min-width: 150px;
+          &::before {
+            left: 0;
+            right: 0;
+            bottom: -2px;
+            top: auto;
+            width: 100%;
+            height: 2px;
+            transform: scaleX(0);
+          }
         }
 
         &:hover {
           color: #fff;
+          background: rgba(255, 255, 255, 0.03);
         }
-      }
-    }
-  }
 
-  .journey-content {
-    width: 100%;
+        &.active {
+          color: #90acff;
+          background: transparent; /* Or maybe a subtle gradient? */
 
-    .journey-card {
-      background: linear-gradient(
-          112.57deg,
-          rgba(17, 18, 20, 0.6) 4.87%,
-          rgba(12, 13, 15, 0.72) 75.88%
-        ),
-        url('/blue-element.png');
-      background-repeat: no-repeat;
-      background-position: center right;
-      background-size: cover, 800px auto;
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      box-shadow: inset 0px 1px 1px 1px rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(5px);
-      border-radius: 24px;
-      overflow: hidden;
-      position: relative;
-    }
+          &::before {
+            transform: scaleY(1);
+            @media (max-width: 768px) {
+              transform: scaleX(1);
+            }
+          }
 
-    .journey-item {
-      padding: 40px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-
-      &:last-child {
-        border-bottom: none;
-      }
-
-      .journey-info {
-        display: grid;
-        grid-template-columns: 250px auto auto;
-        gap: 30px;
-        align-items: start;
-
-        @media (max-width: 900px) {
-          grid-template-columns: 1fr;
-          gap: 15px;
+          .sidebar-item-name {
+            color: #90acff;
+          }
         }
-      }
 
-      .journey-item-header {
-        .journey-item-title {
-          font-size: 1.8rem;
+        .sidebar-item-name {
+          font-size: 1.1rem;
           font-weight: 500;
-          margin-top: 0;
-          margin-bottom: 10px;
-          text-decoration: underline;
-          text-underline-offset: 8px;
+          color: rgba(255, 255, 255, 0.7);
+          transition: color 0.3s ease;
         }
 
-        .journey-item-role {
+        .sidebar-item-period {
+          font-size: 0.85rem;
+          color: rgba(255, 255, 255, 0.4);
+          white-space: nowrap;
+        }
+      }
+    }
+
+    .journey-details {
+      flex-grow: 1;
+      min-height: 300px;
+
+      // background-image: url('/blue-element.png');
+      // background-repeat: no-repeat;
+      // background-position: right center;
+      // background-size: contain;
+
+      .details-header {
+        margin-bottom: 10px;
+
+        .details-title {
+          font-size: 2rem;
+          font-weight: 600;
+          color: #90acff;
+          margin: 0 0 5px 0;
+        }
+
+        .details-period {
           font-size: 1rem;
-          color: #fff;
-          margin-bottom: 5px;
-        }
-
-        .journey-item-period {
-          font-size: 0.9rem;
           color: rgba(255, 255, 255, 0.5);
         }
       }
 
-      .journey-item-description {
-        font-size: 0.95rem;
-        line-height: 1.6;
-        color: rgba(255, 255, 255, 0.8);
-        max-width: 500px;
+      .details-role {
+        font-size: 1.2rem;
+        color: #fff;
+        margin-bottom: 25px;
+        font-weight: 500;
+      }
+
+      .details-description {
+        margin-bottom: 30px;
 
         p {
-          margin-top: 0;
-          margin-bottom: 10px;
+          font-size: 1rem;
+          line-height: 1.7;
+          color: rgba(255, 255, 255, 0.75);
+          margin-bottom: 12px;
+
           &:last-child {
             margin-bottom: 0;
           }
         }
       }
 
-      .journey-item-tags {
+      .details-tags {
         display: flex;
         flex-wrap: wrap;
         gap: 10px;
-        justify-content: flex-end;
-        align-content: flex-start;
-        width: 200px;
-
-        @media (max-width: 900px) {
-          justify-content: flex-start;
-        }
 
         .tag {
-          background: rgba(255, 255, 255, 0.08);
-          padding: 6px 16px;
-          border-radius: 8px;
-          font-size: 0.85rem;
-          color: rgba(255, 255, 255, 0.7);
+          background: rgba(255, 255, 255, 0.08); /* Slightly lighter than pure black */
+          padding: 8px 16px;
+          border-radius: 20px;
+          font-size: 0.9rem;
+          color: rgba(255, 255, 255, 0.8);
+          border: 1px solid rgba(255, 255, 255, 0.1);
         }
       }
     }
   }
 }
 
-@media (max-width: 768px) {
-  .journey-section {
-    padding: 60px 0;
-
-    .journey-header .journey-title {
-      font-size: 2.2rem;
-    }
-
-    .journey-item {
-      padding: 30px 20px;
-    }
-  }
-}
+/* Mobile adjustments handled in media queries above */

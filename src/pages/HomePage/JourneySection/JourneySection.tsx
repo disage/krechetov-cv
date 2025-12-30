@@ -1,11 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './JourneySection.scss';
 import { experienceData, educationData } from '../../../constants';
+import Tabs from '../../../components/ui/Tabs/Tabs';
+
+const JOURNEY_TABS = [
+  { label: 'Work', value: 'work' },
+  { label: 'Education', value: 'education' },
+];
 
 const JourneySection = () => {
   const [activeTab, setActiveTab] = useState('work');
+  const [selectedIndex, setSelectedIndex] = useState(0);
 
   const currentData = activeTab === 'work' ? experienceData : educationData;
+  const selectedItem = currentData[selectedIndex];
+
+  useEffect(() => {
+    setSelectedIndex(0);
+  }, [activeTab]);
 
   return (
     <section className='journey-section' id='experience'>
@@ -18,54 +30,55 @@ const JourneySection = () => {
             Over the past 4 years, I've collaborated with diverse teams and clients on a wide range
             of projects — turning creative ideas into impactful digital experiences.
           </p>
-        </div>
 
-        <div className='journey-tabs-container'>
-          <div className='journey-tabs'>
-            <button
-              className={`journey-tab ${activeTab === 'work' ? 'active' : ''}`}
-              onClick={() => setActiveTab('work')}
-            >
-              Work
-            </button>
-            <button
-              className={`journey-tab ${activeTab === 'education' ? 'active' : ''}`}
-              onClick={() => setActiveTab('education')}
-            >
-              Education
-            </button>
-          </div>
+          <Tabs
+            tabs={JOURNEY_TABS}
+            activeTab={activeTab}
+            onTabChange={setActiveTab}
+          />
         </div>
 
         <div className='journey-content'>
-          <div className='journey-card'>
+          <div className='journey-sidebar'>
             {currentData.map((item, index) => (
-              <div className='journey-item' key={index}>
-                <div className='journey-info'>
-                  <div className='journey-item-header'>
-                    <h3 className='journey-item-title'>
-                      {activeTab === 'work' ? (item as any).company : (item as any).institution}
-                    </h3>
-                    <div className='journey-item-role'>
-                      {activeTab === 'work' ? (item as any).position : (item as any).degree}
-                    </div>
-                    <div className='journey-item-period'>• {item.period}</div>
-                  </div>
-                  <div className='journey-item-description'>
-                    {item.description.map((desc, i) => (
-                      <p key={i}>{desc}</p>
-                    ))}
-                  </div>
-                  <div className='journey-item-tags'>
-                    {item.tags.map((tag, i) => (
-                      <span className='tag' key={i}>
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
+              <div
+                key={index}
+                className={`journey-sidebar-item ${index === selectedIndex ? 'active' : ''}`}
+                onClick={() => setSelectedIndex(index)}
+              >
+                <span className='sidebar-item-name'>
+                  {activeTab === 'work' ? (item as any).company : (item as any).institution}
+                </span>
+                <span className='sidebar-item-period'>{item.period}</span>
               </div>
             ))}
+          </div>
+
+          <div className='journey-details'>
+            <div className='details-header'>
+              <h3 className='details-title'>
+                {activeTab === 'work' ? (selectedItem as any).company : (selectedItem as any).institution}
+              </h3>
+              <span className='details-period'>{selectedItem.period}</span>
+            </div>
+            
+            <div className='details-role'>
+              {activeTab === 'work' ? (selectedItem as any).position : (selectedItem as any).degree}
+            </div>
+
+            <div className='details-description'>
+              {selectedItem.description.map((desc, i) => (
+                <p key={i}>{desc}</p>
+              ))}
+            </div>
+
+            <div className='details-tags'>
+              {selectedItem.tags.map((tag, i) => (
+                <span className='tag' key={i}>
+                  {tag}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
       </div>

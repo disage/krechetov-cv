@@ -40,7 +40,7 @@ const ColaborateSection = () => {
             <div className='row'>
               <div className='my-avatar'></div>
               <div className='my-description col'>
-                <span>Krechetov Dmitriy</span>
+                <span>Krechetov Dmytro</span>
                 <span>Web Developer</span>
               </div>
             </div>

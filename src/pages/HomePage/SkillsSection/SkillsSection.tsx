@@ -2,6 +2,12 @@ import React, { useEffect, useState } from 'react';
 import './SkillsSection.scss';
 import Button from '../../../components/ui/Button/Button';
 import { servicesData, skillsData } from '../../../constants';
+import Tabs from '../../../components/ui/Tabs/Tabs';
+
+const SKILLS_TABS = [
+  { label: 'Skills', value: 'skills' },
+  { label: 'Services', value: 'services' },
+];
 
 const SkillsSection = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 1000);
@@ -16,6 +22,11 @@ const SkillsSection = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  const handleTabChange = (tab: string) => {
+    setActiveTab(tab);
+    setShowAll(false);
+  };
+
   const currentData = activeTab === 'skills' ? skillsData : servicesData;
   const visibleData = isMobile && !showAll ? currentData.slice(0, 3) : currentData;
 
@@ -23,26 +34,12 @@ const SkillsSection = () => {
     <section className='skills-section'>
       <div className='skills-section-row'>
         <div className='col'>
-          <div className='tabs'>
-            <button
-              className={`tab ${activeTab === 'skills' ? 'active' : ''}`}
-              onClick={() => {
-                setActiveTab('skills');
-                setShowAll(false);
-              }}
-            >
-              Skills
-            </button>
-            <button
-              className={`tab ${activeTab === 'services' ? 'active' : ''}`}
-              onClick={() => {
-                setActiveTab('services');
-                setShowAll(false);
-              }}
-            >
-              Services
-            </button>
-          </div>
+          <Tabs
+            tabs={SKILLS_TABS}
+            activeTab={activeTab}
+            onTabChange={handleTabChange}
+            className='skills-tabs-container'
+          />
 
           {/* Таблица */}
           <div className='skills-table'>
