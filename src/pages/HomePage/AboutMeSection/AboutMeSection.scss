@@ -21,6 +21,8 @@
 
 @media (max-width: 600px) {
   .about-section {
+    justify-content: start;
+    padding: 0 30px;
     p {
       font-size: 2rem;
     }

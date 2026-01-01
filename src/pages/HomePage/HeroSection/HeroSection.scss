@@ -21,10 +21,14 @@
   p {
     font-size: 1.5rem;
     margin-bottom: 200px;
+    max-width: 800px;
   }
 }
 
 @media (max-width: 600px) {
+  .hero-section {
+    padding: 0 20px;
+  }
   h1,
   .highlighted-name {
     font-size: 4rem !important;

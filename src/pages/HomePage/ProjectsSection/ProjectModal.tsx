@@ -102,11 +102,39 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
               </div>
               {hasMultipleImages && (
                 <>
-                  <button className='slider-btn prev' onClick={prevImage}>
-                    ‹
+                  <button className='slider-btn prev' onClick={prevImage} aria-label="Previous image">
+                    <svg
+                      width='24'
+                      height='24'
+                      viewBox='0 0 24 24'
+                      fill='none'
+                      xmlns='http://www.w3.org/2000/svg'
+                    >
+                      <path
+                        d='M15 18L9 12L15 6'
+                        stroke='currentColor'
+                        strokeWidth='2'
+                        strokeLinecap='round'
+                        strokeLinejoin='round'
+                      />
+                    </svg>
                   </button>
-                  <button className='slider-btn next' onClick={nextImage}>
-                    ›
+                  <button className='slider-btn next' onClick={nextImage} aria-label="Next image">
+                    <svg
+                      width='24'
+                      height='24'
+                      viewBox='0 0 24 24'
+                      fill='none'
+                      xmlns='http://www.w3.org/2000/svg'
+                    >
+                      <path
+                        d='M9 18L15 12L9 6'
+                        stroke='currentColor'
+                        strokeWidth='2'
+                        strokeLinecap='round'
+                        strokeLinejoin='round'
+                      />
+                    </svg>
                   </button>
                   <div className='slider-dots'>
                     {project.images!.map((_, idx) => (

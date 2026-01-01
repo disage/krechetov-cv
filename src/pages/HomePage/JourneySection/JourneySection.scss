@@ -1,5 +1,6 @@
 .journey-section {
-  padding: 100px 0;
+  padding: 50px 0;
+  margin-bottom: 100px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -13,6 +14,7 @@
     align-items: flex-start; /* Align header to left? User said "left column list", usually implies a dashboard look */
     /* Reseting align items to center for the header part, handle content layout separately */
     align-items: center;
+    padding-bottom: 100px;
   }
 
   .journey-header {
@@ -24,11 +26,12 @@
     align-items: center;
 
     .journey-title {
-      font-size: 3.5rem;
+      font-size: 3rem;
       font-weight: 500;
       margin-bottom: 20px;
       color: #fff;
       line-height: 1.1;
+      margin-top: 0;
 
       .highlight {
         color: #90acff;
@@ -38,12 +41,10 @@
     .journey-subtitle {
       font-size: 1.1rem;
       color: rgba(255, 255, 255, 0.6);
-      max-width: 600px;
+      max-width: 900px;
       margin: 0 auto 30px;
       line-height: 1.6;
     }
-
-
   }
 
   .journey-content {
@@ -210,3 +211,12 @@
 }
 
 /* Mobile adjustments handled in media queries above */
+@media (max-width: 768px) {
+  .journey-section {
+    padding: 0 30px;
+  }
+  .journey-container {
+    margin-top: 50px;
+    margin-bottom: 100px;
+  }
+}

@@ -13,7 +13,9 @@ const JourneySection = () => {
   const [selectedIndex, setSelectedIndex] = useState(0);
 
   const currentData = activeTab === 'work' ? experienceData : educationData;
-  const selectedItem = currentData[selectedIndex];
+  // Safe check to prevent crash when switching tabs if previous index > new data length
+  const safeIndex = selectedIndex >= currentData.length ? 0 : selectedIndex;
+  const selectedItem = currentData[safeIndex];
 
   useEffect(() => {
     setSelectedIndex(0);

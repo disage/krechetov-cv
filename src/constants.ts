@@ -140,13 +140,14 @@ export const educationData = [
 export const projectsData = [
   {
     category: 'Websites',
-    title: 'Corporate Website & LMS',
+    title: 'Website & LMS',
     company: 'TalentInsight',
-    description: 'A comprehensive corporate platform with integrated Learning Management System.',
-    fullDescription: 'Designed and developed a scalable corporate website that serves as a central hub for TalentInsight. The project included a custom LMS solution for employee training, featuring course management, progress tracking, and interactive quizzes. The platform also integrates with internal CRM tools for seamless data flow.',
+    description: 'A corporate platform with integrated LMS.',
+    fullDescription:
+      'Designed and developed a scalable corporate website that serves as a central hub for TalentInsight. The project included a custom LMS solution for employee training, featuring course management, progress tracking, and interactive quizzes. The platform also integrates with internal CRM tools for seamless data flow.',
     technologies: ['React', 'Node.js', 'AWS', 'PostgreSQL', 'SCSS'],
     role: 'Lead Developer',
-    images: ['/blue-element.png'],
+    images: ['/project-zonArt.png', '/blue-element.png'],
     websiteUrl: 'https://talentinsight.com',
     githubUrl: 'https://github.com/username/talentinsight',
   },
@@ -155,7 +156,8 @@ export const projectsData = [
     title: 'E-commerce Platform',
     company: 'Noer Agency',
     description: 'High-performance online store with custom checkout flows.',
-    fullDescription: 'Built a robust e-commerce solution focusing on conversion optimization and speed. Implemented a custom checkout process, integrated multiple payment gateways, and developed a real-time inventory management system. Key focus was on mobile responsiveness and SEO performance.',
+    fullDescription:
+      'Built a robust e-commerce solution focusing on conversion optimization and speed. Implemented a custom checkout process, integrated multiple payment gateways, and developed a real-time inventory management system. Key focus was on mobile responsiveness and SEO performance.',
     technologies: ['Vue 3', 'Pinia', 'Firebase', 'Stripe API'],
     role: 'Frontend Developer',
     images: ['/blue-element.png'],
@@ -167,7 +169,8 @@ export const projectsData = [
     title: 'Finance Dashboard',
     company: 'FinTech Corp',
     description: 'User-centered design for complex financial data visualization.',
-    fullDescription: 'Redesigned a legacy financial dashboard to improve user experience and data readability. Created a comprehensive design system, high-fidelity prototypes, and conducted user testing to validate the new interface. The result was a 40% increase in user efficiency.',
+    fullDescription:
+      'Redesigned a legacy financial dashboard to improve user experience and data readability. Created a comprehensive design system, high-fidelity prototypes, and conducted user testing to validate the new interface. The result was a 40% increase in user efficiency.',
     technologies: ['Figma', 'Prototyping', 'User Research', 'Design Systems'],
     role: 'UI/UX Designer',
     images: ['/blue-element.png'],
@@ -179,7 +182,8 @@ export const projectsData = [
     title: 'Travel App Concept',
     company: 'Personal Project',
     description: 'Mobile-first travel planning application with social features.',
-    fullDescription: 'Conceptualized and designed a mobile application for social travel planning. The project involved deep user research, persona creation, and the design of a vibrant, engaging interface that encourages social interaction and itinerary sharing.',
+    fullDescription:
+      'Conceptualized and designed a mobile application for social travel planning. The project involved deep user research, persona creation, and the design of a vibrant, engaging interface that encourages social interaction and itinerary sharing.',
     technologies: ['Figma', 'Mobile Design', 'Interaction Design'],
     role: 'Product Designer',
     images: ['/blue-element.png'],
@@ -191,7 +195,8 @@ export const projectsData = [
     title: 'Customer Support Bot',
     company: 'RetailChain',
     description: 'AI-powered Telegram bot for automated customer inquiries.',
-    fullDescription: 'Developed an intelligent telegram bot to handle common customer support queries, reducing support ticket volume by 30%. The bot uses natural language processing to understand user intent and provides instant answers or routes complex issues to human agents.',
+    fullDescription:
+      'Developed an intelligent telegram bot to handle common customer support queries, reducing support ticket volume by 30%. The bot uses natural language processing to understand user intent and provides instant answers or routes complex issues to human agents.',
     technologies: ['Python', 'Telegram API', 'NLP', 'Docker'],
     role: 'Backend Developer',
     images: ['/blue-element.png'],
@@ -203,7 +208,8 @@ export const projectsData = [
     title: 'Crypto Price Tracker',
     company: 'Freelance',
     description: 'Real-time cryptocurrency price alerts and portfolio tracking.',
-    fullDescription: 'Created a Telegram bot for tracking cryptocurrency prices in real-time. Users can set custom alerts, track their portfolio value, and receive daily market summaries. Built with a focus on low latency and high reliability.',
+    fullDescription:
+      'Created a Telegram bot for tracking cryptocurrency prices in real-time. Users can set custom alerts, track their portfolio value, and receive daily market summaries. Built with a focus on low latency and high reliability.',
     technologies: ['Node.js', 'WebSockets', 'Telegram API', 'Redis'],
     role: 'Full Stack Developer',
     images: ['/blue-element.png'],

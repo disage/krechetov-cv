@@ -1,0 +1,74 @@
+.scrolly-container {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #050505; // Deep dark background
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.scrolly-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding-top: 5rem; // Safe area
+  padding-bottom: 2rem; // Safe area
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  // align-items: center;
+  opacity: 0; // Hidden by default
+  will-change: transform, opacity;
+  overflow: hidden; // Hide overflow by default for the slide container
+  pointer-events: none; // Default to no interaction, JS enables 'auto' when active
+
+  // Ensure content inside is centered and behaves well
+  > * {
+    width: 100%;
+    max-width: 1200px;
+    max-height: 100%; // Ensure it fits in viewport
+    margin: 0 auto !important; // Center content horizontally on large screens
+    overflow-y: auto; // Allow internal scrolling if content is too tall
+
+    // Hide scrollbar for cleaner look
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  // Optional: Add specific styles if the sections need to be flex containers themselves
+  // but usually they are blocks.
+}
+
+.light-sphere-scrolly {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60vw; // Slightly smaller to be more defined
+  height: 60vw;
+  max-width: 600px;
+  max-height: 600px;
+  background: radial-gradient(circle, rgba(100, 140, 255, 0.6) 0%, rgba(100, 140, 255, 0) 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(60px); // Stronger blur for "glow"
+  opacity: 0; // Controlled by JS
+  will-change: transform, opacity, filter;
+  mix-blend-mode: screen; // Enhances the light effect
+}
+
+@media (max-width: 768px) {
+  .light-sphere-scrolly {
+    width: 90vw;
+    height: 90vw;
+  }
+}
