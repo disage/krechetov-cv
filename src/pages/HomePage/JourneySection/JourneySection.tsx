@@ -8,7 +8,11 @@ const JOURNEY_TABS = [
   { label: 'Education', value: 'education' },
 ];
 
-const JourneySection = () => {
+interface JourneySectionProps {
+  showHeader?: boolean;
+}
+
+const JourneySection: React.FC<JourneySectionProps> = ({ showHeader = true }) => {
   const [activeTab, setActiveTab] = useState('work');
   const [selectedIndex, setSelectedIndex] = useState(0);
 
@@ -22,23 +26,35 @@ const JourneySection = () => {
   }, [activeTab]);
 
   return (
-    <section className='journey-section' id='experience'>
+    <section className={`journey-section ${!showHeader ? 'journey-section-no-header' : ''}`} id={showHeader ? 'experience' : undefined}>
       <div className='journey-container'>
-        <div className='journey-header'>
-          <h2 className='journey-title'>
-            Explore My Developer <span className='highlight'>Journey</span>
-          </h2>
-          <p className='journey-subtitle'>
-            Over the past 4 years, I've collaborated with diverse teams and clients on a wide range
-            of projects — turning creative ideas into impactful digital experiences.
-          </p>
+        {showHeader && (
+          <div className='journey-header'>
+            <h2 className='journey-title'>
+              Explore My Developer <span className='highlight'>Journey</span>
+            </h2>
+            <p className='journey-subtitle'>
+              Over the past 4 years, I've collaborated with diverse teams and clients on a wide range
+              of projects — turning creative ideas into impactful digital experiences.
+            </p>
 
-          <Tabs
-            tabs={JOURNEY_TABS}
-            activeTab={activeTab}
-            onTabChange={setActiveTab}
-          />
-        </div>
+            <Tabs
+              tabs={JOURNEY_TABS}
+              activeTab={activeTab}
+              onTabChange={setActiveTab}
+            />
+          </div>
+        )}
+
+        {!showHeader && (
+          <div className='journey-header-compact'>
+            <Tabs
+              tabs={JOURNEY_TABS}
+              activeTab={activeTab}
+              onTabChange={setActiveTab}
+            />
+          </div>
+        )}
 
         <div className='journey-content'>
           <div className='journey-sidebar'>

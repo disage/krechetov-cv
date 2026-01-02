@@ -6,6 +6,28 @@
   align-items: center;
   width: 100%;
 
+  // Header-only variant (for mobile split - first slide)
+  &.journey-section-header-only {
+    .journey-container {
+      justify-content: center;
+      padding-bottom: 0;
+    }
+  }
+
+  // No-header variant (for mobile split - second slide)
+  &.journey-section-no-header {
+    padding-top: 20px;
+
+    .journey-container {
+      padding-bottom: 50px;
+    }
+
+    .journey-header-compact {
+      width: 100%;
+      margin-bottom: 30px;
+    }
+  }
+
   .journey-container {
     width: 100%;
     max-width: 1000px;
@@ -45,6 +67,48 @@
       margin: 0 auto 30px;
       line-height: 1.6;
     }
+
+    .scroll-indicator {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 1rem;
+      margin-bottom: 2rem;
+      opacity: 0.7;
+      transition: opacity 0.3s;
+
+      &:hover {
+        opacity: 1;
+      }
+
+      .mouse {
+        width: 26px;
+        height: 40px;
+        border: 2px solid rgba(255, 255, 255, 0.5);
+        border-radius: 13px;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        padding-top: 8px;
+
+        .wheel {
+          width: 4px;
+          height: 8px;
+          background: rgba(255, 255, 255, 0.7);
+          border-radius: 2px;
+          animation: scroll-wheel 1.5s ease-in-out infinite;
+        }
+      }
+
+      .scroll-text {
+        font-size: 0.875rem;
+        color: rgba(255, 255, 255, 0.6);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        font-weight: 500;
+      }
+    }
   }
 
   .journey-content {
@@ -64,6 +128,7 @@
       width: 250px;
       flex-shrink: 0;
       border-left: 2px solid rgba(255, 255, 255, 0.1);
+      overflow-y: hidden;
 
       @media (max-width: 768px) {
         width: 100%;

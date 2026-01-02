@@ -14,13 +14,16 @@ interface ScrollyTellingProps {
 const ScrollyTelling: React.FC<ScrollyTellingProps> = ({ children }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const sphereRef = useRef<HTMLDivElement>(null);
-  const timelineRef = useRef<gsap.core.Timeline | null>(null);
 
   useGSAP(() => {
     const slides = gsap.utils.toArray<HTMLElement>('.scrolly-slide');
     const sphere = sphereRef.current;
 
     if (!slides.length) return;
+
+    // Simple fixed scroll distance per slide - no dynamic calculations
+    const scrollPerSlide = 100; // vh
+    const totalScrollDistance = slides.length * scrollPerSlide;
 
     // Initial state setup
     slides.forEach((slide, i) => {
@@ -38,36 +41,29 @@ const ScrollyTelling: React.FC<ScrollyTellingProps> = ({ children }) => {
         trigger: containerRef.current,
         pin: true,
         start: 'top top',
-        end: `+=${slides.length * 100}%`,
+        end: `+=${totalScrollDistance}%`,
         scrub: 0.5,
         invalidateOnRefresh: true,
       },
     });
 
-    timelineRef.current = timeline;
+    // Build timeline - each slide gets equal time
+    const STEP_DURATION = 1.5;
 
-    const STEP_DURATION = 1.5; // Fixed duration per transition step logic
-    
-    // Explicitly add label for start (Slide 0)
-    timeline.addLabel('slide-0', 0);
-
-    // Create transitions
     slides.forEach((slide, i) => {
       if (i === slides.length - 1) return;
 
       const nextSlide = slides[i + 1];
 
-      // To ensure predictable timing, we use a consistent timeline build
       // Current slide exits
       timeline.to(slide, {
-          autoAlpha: 0,
-          scale: 0.8,
-          yPercent: -50,
-          filter: 'blur(10px)',
-          duration: 1,
-          ease: 'power2.inOut',
-          // onStart removed to allow clicks during exit (for scroll-up scenario)
-      });
+        autoAlpha: 0,
+        scale: 0.8,
+        yPercent: -50,
+        filter: 'blur(10px)',
+        duration: 1,
+        ease: 'power2.inOut',
+      }, i * STEP_DURATION + 0.5);
 
       // Sphere animation
       if (i === 0) {
@@ -79,56 +75,38 @@ const ScrollyTelling: React.FC<ScrollyTellingProps> = ({ children }) => {
           ease: 'power2.in',
           yoyo: true,
           repeat: 1
-        }, '<');
+        }, i * STEP_DURATION + 0.5);
       } else if (i === 1) {
-         timeline.to(sphere, { opacity: 0, duration: 1, ease: 'power2.inOut' }, '<');
+        timeline.to(sphere, { 
+          opacity: 0, 
+          duration: 1, 
+          ease: 'power2.inOut' 
+        }, i * STEP_DURATION + 0.5);
       }
 
-      // Disable clicks on 'slide' only after it has fully exited so it can be clicked while reversing (scrolling up)
-      timeline.set(slide, { pointerEvents: 'none' });
+      // Disable clicks on slide after exit
+      timeline.set(slide, { pointerEvents: 'none' }, i * STEP_DURATION + 1.5);
 
       // Next slide enters with overlap
-      // Starts at '>-0.5' relative to previous exit. Exit was 1s. So starts at 0.5s relative to step start.
-      // Ends at 0.5 + 1.0 = 1.5s relative to step start.
       timeline.fromTo(nextSlide, {
-            autoAlpha: 0,
-            scale: 1.1,
-            yPercent: 50,
-            zIndex: 10, 
-            pointerEvents: 'auto' // Make clickable immediately upon entry start
-        }, {
-            autoAlpha: 1,
-            scale: 1,
-            yPercent: 0,
-            duration: 1,
-            ease: 'power2.out',
-            pointerEvents: 'auto',
-            zIndex: 10,
-            immediateRender: false // CRITICAL: Prevent this state from applying to all future slides instantly
-        }, '-=0.5'); 
-        
-      // Add label exactly at the end of this step's cycle
-      // The timeline time should mathematically be (i + 1) * STEP_DURATION
-      timeline.addLabel(`slide-${i + 1}`, (i + 1) * STEP_DURATION);
+        autoAlpha: 0,
+        scale: 1.1,
+        yPercent: 50,
+        zIndex: 10,
+        pointerEvents: 'auto'
+      }, {
+        autoAlpha: 1,
+        scale: 1,
+        yPercent: 0,
+        duration: 1,
+        ease: 'power2.out',
+        pointerEvents: 'auto',
+        zIndex: 10,
+        immediateRender: false
+      }, i * STEP_DURATION + 1);
     });
 
   }, { scope: containerRef, dependencies: [children] });
-
-  const handleSlideClick = (index: number) => {
-    const timeline = timelineRef.current;
-    if (timeline && timeline.scrollTrigger) {
-      // labelToScroll is the most reliable mapper if labels are correct
-      const scrollPos = timeline.scrollTrigger.labelToScroll(`slide-${index}`);
-      
-      if (typeof scrollPos === 'number') {
-        gsap.to(window, {
-          scrollTo: scrollPos,
-          duration: 1,
-          ease: 'power3.inOut'
-        });
-      }
-    }
-  };
 
   return (
     <div ref={containerRef} className="scrolly-container">
@@ -137,7 +115,6 @@ const ScrollyTelling: React.FC<ScrollyTellingProps> = ({ children }) => {
         <div 
           className="scrolly-slide" 
           key={index}
-          onClickCapture={() => handleSlideClick(index)} 
         >
           {child}
         </div>

@@ -4,7 +4,7 @@ import Button from '../../../components/ui/Button/Button';
 
 const AboutMeSection = () => {
   return (
-    <section className='about-section'>
+    <section className='about-section' id='about'>
       <p>
         I'm a <span className='highlighted'>web developer</span> focused on building responsive,
         user-friendly websites using modern technologies.

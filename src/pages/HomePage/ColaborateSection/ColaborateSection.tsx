@@ -8,7 +8,7 @@ const ColaborateSection = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
-    <section className='colaborate-section'>
+    <section className='colaborate-section' id='contact'>
       <h2>
         Let’s <span className='highlighted'>Colaborate </span>
       </h2>

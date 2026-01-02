@@ -6,7 +6,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #050505; // Deep dark background
+  background-color: #050505;
   max-width: 1440px;
   margin: 0 auto;
 }
@@ -16,43 +16,34 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
-  padding-top: 5rem; // Safe area
-  padding-bottom: 2rem; // Safe area
+  height: 100vh; // Fixed height - no overflow
+  padding-top: 5rem;
+  padding-bottom: 2rem;
   box-sizing: border-box;
   display: flex;
   justify-content: center;
-  // align-items: center;
-  opacity: 0; // Hidden by default
+  align-items: start;
+  opacity: 0;
   will-change: transform, opacity;
-  overflow: hidden; // Hide overflow by default for the slide container
-  pointer-events: none; // Default to no interaction, JS enables 'auto' when active
+  overflow: hidden; // No scrolling
+  pointer-events: none;
 
-  // Ensure content inside is centered and behaves well
+  // Content wrapper
   > * {
     width: 100%;
     max-width: 1200px;
-    max-height: 100%; // Ensure it fits in viewport
-    margin: 0 auto !important; // Center content horizontally on large screens
-    overflow-y: auto; // Allow internal scrolling if content is too tall
-
-    // Hide scrollbar for cleaner look
-    &::-webkit-scrollbar {
-      display: none;
-    }
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+    height: auto;
+    max-height: calc(100vh - 7rem); // Ensure it fits
+    margin: 0 auto !important;
+    overflow: hidden; // No scrolling
   }
-
-  // Optional: Add specific styles if the sections need to be flex containers themselves
-  // but usually they are blocks.
 }
 
 .light-sphere-scrolly {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  width: 60vw; // Slightly smaller to be more defined
+  width: 60vw;
   height: 60vw;
   max-width: 600px;
   max-height: 600px;
@@ -60,10 +51,10 @@
   border-radius: 50%;
   pointer-events: none;
   z-index: 0;
-  filter: blur(60px); // Stronger blur for "glow"
-  opacity: 0; // Controlled by JS
+  filter: blur(60px);
+  opacity: 0;
   will-change: transform, opacity, filter;
-  mix-blend-mode: screen; // Enhances the light effect
+  mix-blend-mode: screen;
 }
 
 @media (max-width: 768px) {

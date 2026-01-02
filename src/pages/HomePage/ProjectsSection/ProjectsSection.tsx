@@ -6,9 +6,13 @@ import Tabs from '../../../components/ui/Tabs/Tabs';
 
 const TABS = ['Websites', 'UI / UX', 'Bots'];
 
-const ProjectsSection = () => {
+interface ProjectsSectionProps {
+  showHeader?: boolean;
+}
+
+const ProjectsSection: React.FC<ProjectsSectionProps> = ({ showHeader = true }) => {
   const [activeTab, setActiveTab] = useState(TABS[0]);
-  const [selectedProject, setSelectedProject] = useState<typeof projectsData[0] | null>(null);
+  const [selectedProject, setSelectedProject] = useState<(typeof projectsData)[0] | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -29,7 +33,7 @@ const ProjectsSection = () => {
     return projectsData.filter((project) => project.category === activeTab);
   }, [activeTab]);
 
-  const handleOpenModal = (project: typeof projectsData[0]) => {
+  const handleOpenModal = (project: (typeof projectsData)[0]) => {
     setSelectedProject(project);
     setIsModalOpen(true);
   };
@@ -40,28 +44,41 @@ const ProjectsSection = () => {
   };
 
   return (
-    <section className='projects-section' id='projects'>
+    <section className={`projects-section ${!showHeader ? 'projects-section-no-header' : ''}`} id={showHeader ? 'projects' : undefined}>
       <div className='projects-container'>
-        <div className='projects-header'>
-          <h2 className='section-title'>
-            Selected <span className='highlight'>Projects</span>
-          </h2>
-          <p className='section-subtitle'>
-            A collection of digital products, designs, and tools I've built.
-          </p>
+        {showHeader && (
+          <div className='projects-header'>
+            <h2 className='section-title'>
+              See What I've <span className='highlight'>Built</span>
+            </h2>
+            <p className='section-subtitle'>
+              A showcase of my best work — crafted with creativity, strategy, and attention to detail.
+            </p>
 
-          <Tabs
-            tabs={TABS}
-            activeTab={activeTab}
-            onTabChange={setActiveTab}
-            className='projects-tabs'
-          />
-        </div>
+            <Tabs
+              tabs={TABS}
+              activeTab={activeTab}
+              onTabChange={setActiveTab}
+              className='projects-tabs'
+            />
+          </div>
+        )}
+
+        {!showHeader && (
+          <div className='projects-header-compact'>
+            <Tabs
+              tabs={TABS}
+              activeTab={activeTab}
+              onTabChange={setActiveTab}
+              className='projects-tabs'
+            />
+          </div>
+        )}
 
         {isMobile ? (
           <div className='projects-mobile-slider'>
             {filteredProjects.length > 0 && (
-              <div 
+              <div
                 className='project-card'
                 onClick={() => handleOpenModal(filteredProjects[currentSlide])}
               >
@@ -71,36 +88,40 @@ const ProjectsSection = () => {
                     <div className='arrow-icon'>→</div>
                   </div>
                   <h3 className='project-title'>{filteredProjects[currentSlide].title}</h3>
-                  <p className='project-description'>{filteredProjects[currentSlide].description}</p>
+                  <p className='project-description'>
+                    {filteredProjects[currentSlide].description}
+                  </p>
                   <div className='card-footer'>
                     <span className='role-tag'>{filteredProjects[currentSlide].role}</span>
                   </div>
                 </div>
               </div>
             )}
-            
+
             {filteredProjects.length > 1 && (
               <div className='slider-controls'>
-                <button 
-                  className='control-btn prev' 
+                <button
+                  className='control-btn prev'
                   onClick={(e) => {
                     e.stopPropagation();
-                    setCurrentSlide(prev => prev === 0 ? filteredProjects.length - 1 : prev - 1);
+                    setCurrentSlide((prev) =>
+                      prev === 0 ? filteredProjects.length - 1 : prev - 1
+                    );
                   }}
-                  aria-label="Previous project"
+                  aria-label='Previous project'
                 >
                   ←
                 </button>
                 <span className='slide-indicator'>
                   {currentSlide + 1} / {filteredProjects.length}
                 </span>
-                <button 
-                  className='control-btn next' 
+                <button
+                  className='control-btn next'
                   onClick={(e) => {
                     e.stopPropagation();
-                    setCurrentSlide(prev => (prev + 1) % filteredProjects.length);
+                    setCurrentSlide((prev) => (prev + 1) % filteredProjects.length);
                   }}
-                  aria-label="Next project"
+                  aria-label='Next project'
                 >
                   →
                 </button>
@@ -110,11 +131,7 @@ const ProjectsSection = () => {
         ) : (
           <div className='projects-grid'>
             {filteredProjects.map((project, index) => (
-              <div
-                key={index}
-                className='project-card'
-                onClick={() => handleOpenModal(project)}
-              >
+              <div key={index} className='project-card' onClick={() => handleOpenModal(project)}>
                 <div className='card-content'>
                   <div className='card-header'>
                     <span className='company-label'>{project.company}</span>
@@ -132,11 +149,7 @@ const ProjectsSection = () => {
         )}
       </div>
 
-      <ProjectModal
-        project={selectedProject}
-        isOpen={isModalOpen}
-        onClose={handleCloseModal}
-      />
+      <ProjectModal project={selectedProject} isOpen={isModalOpen} onClose={handleCloseModal} />
     </section>
   );
 };
