@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
 import './SkillsSection.scss';
 import Button from '../../../components/ui/Button/Button';
 import { servicesData, skillsData } from '../../../constants';
@@ -34,7 +35,13 @@ const SkillsSection = () => {
   return (
     <section className='skills-section' id='skills'>
       <div className='skills-section-row'>
-        <div className='col'>
+        <motion.div 
+          className='col'
+          initial={{ opacity: 0, x: -30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: false, amount: 0.3 }}
+          transition={{ duration: 0.8, ease: 'easeOut' }}
+        >
           <Tabs
             tabs={SKILLS_TABS}
             activeTab={activeTab}
@@ -44,11 +51,7 @@ const SkillsSection = () => {
 
           {/* Таблица */}
           <div className='skills-table'>
-            <div className='skills-table-headers'>
-              <div className='header'>Area</div>
-              <div className='header'>Type</div>
-              <div className='header'>Description</div>
-            </div>
+
 
             {visibleData.map((row, index) => (
               <React.Fragment key={index}>
@@ -65,7 +68,7 @@ const SkillsSection = () => {
             children='See more' 
             variant='outline' 
           />
-        </div>
+        </motion.div>
         <div className='col skills-image-col'></div>
       </div>
 

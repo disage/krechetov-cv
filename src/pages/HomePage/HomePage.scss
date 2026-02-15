@@ -1,24 +1,30 @@
-.light-circle-image {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%); /* центрируем по горизонтали */
+.main-content {
+  position: relative;
+  width: 100%;
 
-  width: 80vw;
-  aspect-ratio: 1/1;
-  background: radial-gradient(
-    70.71% 70.71% at 50% 50%,
-    rgba(144, 172, 255, 0.2) 0%,
-    rgba(144, 172, 255, 0) 70%,
-    rgba(144, 172, 255, 0) 100%
-  );
-  border-radius: 50%; /* круг */
-  z-index: 1;
+}
+
+.light-sphere-wrapper {
+  position: absolute;
+  top: 100vh; 
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  max-width: 1440px;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 1; /* Sit above background but below interactivess if possible, or just use pointer-events: none */
+  
+  svg {
+    width: 100%;
+    height: auto;
+    opacity: 0.8; /* Adjust if too bright */
+  }
 }
 
 .wrapper {
   position: relative;
-  // overflow: hidden;
   width: 100%;
   display: flex;
   flex-direction: column;

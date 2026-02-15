@@ -1,9 +1,11 @@
 .skills-section {
+  max-width: 1440px;
   min-height: auto;
   margin-bottom: 150px;
   padding-right: 30px;
   padding-left: 30px;
   padding-top: 50px;
+  box-sizing: border-box;
   &-row {
     display: flex;
     flex-direction: row;
@@ -23,19 +25,7 @@
   margin-bottom: 2rem;
 }
 
-.skills-table-headers {
-  grid-column: 1 / -1; /* растянуть на всю ширину всех колонок */
-  display: grid;
-  grid-template-columns: 1fr 1fr 3fr;
-  gap: 20px;
-  border-bottom: 1px solid #888d93;
-  padding-bottom: 20px;
-  font-size: 20px;
-}
 
-.header {
-  color: #888d93;
-}
 
 .area {
   font-weight: bold;
@@ -54,7 +44,7 @@
 
 .col.skills-image-col {
   flex: 0 0 45%;
-  background-image: url('/public/skills-image.svg');
+  background-image: url('/krechetov-cv-2025/skills-image.svg');
   background-repeat: no-repeat;
   background-size: contain;
   background-position: top;

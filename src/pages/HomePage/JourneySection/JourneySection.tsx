@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import './JourneySection.scss';
 import { experienceData, educationData } from '../../../constants';
 import Tabs from '../../../components/ui/Tabs/Tabs';
@@ -8,11 +9,7 @@ const JOURNEY_TABS = [
   { label: 'Education', value: 'education' },
 ];
 
-interface JourneySectionProps {
-  showHeader?: boolean;
-}
-
-const JourneySection: React.FC<JourneySectionProps> = ({ showHeader = true }) => {
+const JourneySection: React.FC = () => {
   const [activeTab, setActiveTab] = useState('work');
   const [selectedIndex, setSelectedIndex] = useState(0);
 
@@ -26,37 +23,37 @@ const JourneySection: React.FC<JourneySectionProps> = ({ showHeader = true }) =>
   }, [activeTab]);
 
   return (
-    <section className={`journey-section ${!showHeader ? 'journey-section-no-header' : ''}`} id={showHeader ? 'experience' : undefined}>
+    <section className='journey-section' id='experience'>
       <div className='journey-container'>
-        {showHeader && (
-          <div className='journey-header'>
-            <h2 className='journey-title'>
-              Explore My Developer <span className='highlight'>Journey</span>
-            </h2>
-            <p className='journey-subtitle'>
-              Over the past 4 years, I've collaborated with diverse teams and clients on a wide range
-              of projects — turning creative ideas into impactful digital experiences.
-            </p>
+        <motion.div 
+          className='journey-header'
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.3 }}
+          transition={{ duration: 0.8, ease: 'easeOut' }}
+        >
+          <h2 className='journey-title'>
+            Explore My Developer <span className='highlight'>Journey</span>
+          </h2>
+          <p className='journey-subtitle'>
+            Over the past 4 years, I've collaborated with diverse teams and clients on a wide range
+            of projects — turning creative ideas into impactful digital experiences.
+          </p>
 
-            <Tabs
-              tabs={JOURNEY_TABS}
-              activeTab={activeTab}
-              onTabChange={setActiveTab}
-            />
-          </div>
-        )}
+          <Tabs
+            tabs={JOURNEY_TABS}
+            activeTab={activeTab}
+            onTabChange={setActiveTab}
+          />
+        </motion.div>
 
-        {!showHeader && (
-          <div className='journey-header-compact'>
-            <Tabs
-              tabs={JOURNEY_TABS}
-              activeTab={activeTab}
-              onTabChange={setActiveTab}
-            />
-          </div>
-        )}
-
-        <div className='journey-content'>
+        <motion.div 
+          className='journey-content'
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.2 }}
+          transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
+        >
           <div className='journey-sidebar'>
             {currentData.map((item, index) => (
               <div
@@ -98,7 +95,7 @@ const JourneySection: React.FC<JourneySectionProps> = ({ showHeader = true }) =>
               ))}
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

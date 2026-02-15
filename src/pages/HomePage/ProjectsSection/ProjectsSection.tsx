@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import './ProjectsSection.scss';
 import { projectsData } from '../../../constants';
 import ProjectModal from './ProjectModal';
@@ -6,11 +7,7 @@ import Tabs from '../../../components/ui/Tabs/Tabs';
 
 const TABS = ['Websites', 'UI / UX', 'Bots'];
 
-interface ProjectsSectionProps {
-  showHeader?: boolean;
-}
-
-const ProjectsSection: React.FC<ProjectsSectionProps> = ({ showHeader = true }) => {
+const ProjectsSection: React.FC = () => {
   const [activeTab, setActiveTab] = useState(TABS[0]);
   const [selectedProject, setSelectedProject] = useState<(typeof projectsData)[0] | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -30,7 +27,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({ showHeader = true }) 
   }, [activeTab]);
 
   const filteredProjects = useMemo(() => {
-    return projectsData.filter((project) => project.category === activeTab);
+    return projectsData.filter((project) => project.categories.includes(activeTab));
   }, [activeTab]);
 
   const handleOpenModal = (project: (typeof projectsData)[0]) => {
@@ -44,59 +41,64 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({ showHeader = true }) 
   };
 
   return (
-    <section className={`projects-section ${!showHeader ? 'projects-section-no-header' : ''}`} id={showHeader ? 'projects' : undefined}>
+    <section className='projects-section' id='projects'>
       <div className='projects-container'>
-        {showHeader && (
-          <div className='projects-header'>
-            <h2 className='section-title'>
-              See What I've <span className='highlight'>Built</span>
-            </h2>
-            <p className='section-subtitle'>
-              A showcase of my best work — crafted with creativity, strategy, and attention to detail.
-            </p>
+        <motion.div 
+          className='projects-header'
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.3 }}
+          transition={{ duration: 0.8, ease: 'easeOut' }}
+        >
+          <h2 className='section-title'>
+            See What I've <span className='highlight'>Built</span>
+          </h2>
+          <p className='section-subtitle'>
+            A showcase of my best work — crafted with creativity, strategy, and attention to detail.
+          </p>
 
-            <Tabs
-              tabs={TABS}
-              activeTab={activeTab}
-              onTabChange={setActiveTab}
-              className='projects-tabs'
-            />
-          </div>
-        )}
-
-        {!showHeader && (
-          <div className='projects-header-compact'>
-            <Tabs
-              tabs={TABS}
-              activeTab={activeTab}
-              onTabChange={setActiveTab}
-              className='projects-tabs'
-            />
-          </div>
-        )}
+          <Tabs
+            tabs={TABS}
+            activeTab={activeTab}
+            onTabChange={setActiveTab}
+            className='projects-tabs'
+          />
+        </motion.div>
 
         {isMobile ? (
-          <div className='projects-mobile-slider'>
-            {filteredProjects.length > 0 && (
-              <div
-                className='project-card'
-                onClick={() => handleOpenModal(filteredProjects[currentSlide])}
-              >
-                <div className='card-content'>
-                  <div className='card-header'>
-                    <span className='company-label'>{filteredProjects[currentSlide].company}</span>
-                    <div className='arrow-icon'>→</div>
+          <motion.div 
+            className='projects-mobile-slider'
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+          >
+            <AnimatePresence mode='wait'>
+              {filteredProjects.length > 0 && (
+                <motion.div
+                  key={filteredProjects[currentSlide].title}
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -20 }}
+                  transition={{ duration: 0.3 }}
+                  className='project-card'
+                  onClick={() => handleOpenModal(filteredProjects[currentSlide])}
+                >
+                  <div className='card-content'>
+                    <div className='card-header'>
+                      <span className='company-label'>{filteredProjects[currentSlide].company}</span>
+                      <div className='arrow-icon'>→</div>
+                    </div>
+                    <h3 className='project-title'>{filteredProjects[currentSlide].title}</h3>
+                    <p className='project-description'>
+                      {filteredProjects[currentSlide].description}
+                    </p>
+                    <div className='card-footer'>
+                      <span className='role-tag'>{filteredProjects[currentSlide].role}</span>
+                    </div>
                   </div>
-                  <h3 className='project-title'>{filteredProjects[currentSlide].title}</h3>
-                  <p className='project-description'>
-                    {filteredProjects[currentSlide].description}
-                  </p>
-                  <div className='card-footer'>
-                    <span className='role-tag'>{filteredProjects[currentSlide].role}</span>
-                  </div>
-                </div>
-              </div>
-            )}
+                </motion.div>
+              )}
+            </AnimatePresence>
 
             {filteredProjects.length > 1 && (
               <div className='slider-controls'>
@@ -127,11 +129,20 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({ showHeader = true }) 
                 </button>
               </div>
             )}
-          </div>
+          </motion.div>
         ) : (
           <div className='projects-grid'>
-            {filteredProjects.map((project, index) => (
-              <div key={index} className='project-card' onClick={() => handleOpenModal(project)}>
+            {filteredProjects.map((project) => (
+              <motion.div 
+                key={project.title} 
+                className='project-card' 
+                onClick={() => handleOpenModal(project)}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: false, amount: 0.1 }}
+                whileHover={{ y: -5, transition: { duration: 0.2 } }}
+                transition={{ duration: 0.3 }}
+              >
                 <div className='card-content'>
                   <div className='card-header'>
                     <span className='company-label'>{project.company}</span>
@@ -143,7 +154,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({ showHeader = true }) 
                     <span className='role-tag'>{project.role}</span>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         )}

@@ -1,14 +1,24 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import './ColaborateSection.scss';
 import Button from '../../../components/ui/Button/Button';
 import Modal from '../../../components/elements/ColaborateModal/ColaborateModal';
 import InstagramIcon from '../../../assets/instagram.svg?react';
+import GithubIcon from '../../../assets/github.svg?react';
+import LinkedinIcon from '../../../assets/linkedin.svg?react';
 
 const ColaborateSection = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
-    <section className='colaborate-section' id='contact'>
+    <motion.section
+      className='colaborate-section'
+      id='contact'
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: false, amount: 0.3 }}
+      transition={{ duration: 0.8, ease: 'easeOut' }}
+    >
       <h2>
         Let’s <span className='highlighted'>Colaborate </span>
       </h2>
@@ -54,10 +64,10 @@ const ColaborateSection = () => {
               <InstagramIcon className='social-media-icon' width={32} height={32} />
             </li>
             <li>
-              <InstagramIcon className='social-media-icon' width={32} height={32} />
+              <GithubIcon className='social-media-icon' width={32} height={32} />
             </li>
             <li>
-              <InstagramIcon className='social-media-icon' width={32} height={32} />
+              <LinkedinIcon className='social-media-icon' width={32} height={32} />
             </li>
           </ul>
         </div>
@@ -84,7 +94,7 @@ const ColaborateSection = () => {
           </form>
         </div>
       </Modal>
-    </section>
+    </motion.section>
   );
 };
 

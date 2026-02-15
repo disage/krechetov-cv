@@ -1,23 +1,40 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import './HeroSection.scss';
 
 const HeroSection = () => {
   return (
     <section className='hero-section'>
-      <h1>
+      <motion.h1
+        initial={{ opacity: 0, scale: 0.9 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: false }}
+        transition={{ duration: 0.8, ease: 'easeOut' }}
+      >
         Hey, I'm <span className='highlighted-name'>Dmytro</span>
-      </h1>
-      <p>
+      </motion.h1>
+      <motion.p
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: false }}
+        transition={{ duration: 0.8, delay: 0.3, ease: 'easeOut' }}
+      >
         A web developer passionate about building digital experiences that actually deliver results
-      </p>
+      </motion.p>
 
       {/* Scroll indicator */}
-      <div className='scroll-indicator'>
+      <motion.div 
+        className='scroll-indicator'
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: false }}
+        transition={{ duration: 1, delay: 1 }}
+      >
         <div className='mouse'>
           <div className='wheel'></div>
         </div>
         <span className='scroll-text'>Scroll</span>
-      </div>
+      </motion.div>
     </section>
   );
 };

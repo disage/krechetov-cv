@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import gsap from 'gsap';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 import './Header.scss';
@@ -16,33 +17,21 @@ const Header: React.FC = () => {
     const targetElement = document.getElementById(targetId);
     if (!targetElement) return;
     
-    // Find which slide contains the target element
-    const slides = Array.from(document.querySelectorAll('.scrolly-slide'));
-    let targetSlideIndex = -1;
-    
-    slides.forEach((slide, index) => {
-      if (slide.contains(targetElement)) {
-        targetSlideIndex = index;
-      }
-    });
-    
-    if (targetSlideIndex === -1) return;
-    
-    // Calculate scroll position: slideIndex * 100vh + 0.5vh offset
-    // The offset ensures we land in the middle of the slide when it's fully visible
-    const vh = window.innerHeight;
-    const scrollPosition = targetSlideIndex * vh + (vh * 0.5);
-    
     // Use GSAP ScrollToPlugin for smooth scroll
     gsap.to(window, {
-      scrollTo: scrollPosition,
+      scrollTo: { y: targetElement, offsetY: 100 },
       duration: 1.5,
       ease: 'power2.inOut',
     });
   };
 
   return (
-    <header className={`site-header ${isOpen ? 'open' : ''}`}>
+    <motion.header 
+      className={`site-header ${isOpen ? 'open' : ''}`}
+      initial={{ y: -100, x: '-50%', opacity: 0 }}
+      animate={{ y: 0, x: '-50%', opacity: 1 }}
+      transition={{ duration: 0.8, ease: 'easeOut' }}
+    >
       <div className='site-header-wrapper'>
         <div className='logo'>KD</div>
 
@@ -104,7 +93,7 @@ const Header: React.FC = () => {
           </div>
         </div>
       </div>
-    </header>
+    </motion.header>
   );
 };
 

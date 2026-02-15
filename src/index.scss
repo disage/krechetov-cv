@@ -19,6 +19,7 @@ html {
     margin: 0;
     display: flex;
     min-height: 100vh;
+    overflow-x: hidden;
     background-color: #000000;
     button {
       margin: 0;
@@ -44,18 +45,16 @@ html {
         margin: 0 auto;
       }
 
-      // ScrollyTelling container needs to be full bleed or handle its own width
-      .scrolly-container {
-        max-width: 100%;
-      }
+
 
       section {
         display: flex;
         position: relative;
         flex-direction: column; 
         width: 100%;
-        min-height: 100vh;
+        min-height: auto;
         z-index: 2;
+        box-sizing: border-box;
         // max-width is handled by parent or self
       }
     }

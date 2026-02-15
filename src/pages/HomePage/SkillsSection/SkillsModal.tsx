@@ -66,18 +66,14 @@ const SkillsModal: React.FC<SkillsModalProps> = ({ isOpen, onClose, initialTab =
 
         <div className="skills-modal-body">
           <div className="skills-table">
-            <div className="skills-table-headers">
-              <div className="header">Area</div>
-              <div className="header">Type</div>
-              <div className="header">Description</div>
-            </div>
+
 
             {currentData.map((row, index) => (
-              <React.Fragment key={index}>
+              <div className="skills-row" key={index}>
                 <div className="area">{row.area}</div>
-                <div className="type">{row.type}</div>
+                {row.type ? <div className="type">{row.type}</div> : <div></div>}
                 <div className="desc">{row.description.join(', ')}</div>
-              </React.Fragment>
+              </div>
             ))}
           </div>
         </div>
