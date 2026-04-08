@@ -254,7 +254,7 @@ export const projectsData = [
     company: 'TalentInsight 🇨🇳🇩🇪',
     description: 'High-performance CRM  with custom flows',
     fullDescription:
-      'Built a robust e-commerce solution focusing on conversion optimization and speed. Implemented a custom checkout process, integrated multiple payment gateways, and developed a real-time inventory management system. Key focus was on mobile responsiveness and SEO performance.',
+      'TalentInsight Orders CRM — a web-based CRM for managing orders, clients, and trainers in the corporate training industry. Features include a sales analytics dashboard, session calendar, PDF invoice generation, role-based access control, and multi-currency support. Stack: React 19, TypeScript, Tailwind CSS, AWS (Cognito, API Gateway, Lambda, DynamoDB, S3), Vite',
     technologies: ['React', 'TS', 'AWS'],
     role: 'FullStack Developer',
     images: [

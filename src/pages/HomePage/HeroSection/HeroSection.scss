@@ -3,6 +3,7 @@
   justify-content: center;
   text-align: center;
   min-height: 100vh;
+  padding-top: 80px;
 
   h1 {
     font-size: 6rem;
@@ -84,7 +85,7 @@
 
 @media (max-width: 600px) {
   .hero-section {
-    padding: 0 20px;
+    padding: 80px 20px 0;
 
     .scroll-indicator {
       bottom: 1rem;
