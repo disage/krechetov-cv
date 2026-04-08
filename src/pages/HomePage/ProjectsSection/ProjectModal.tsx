@@ -61,9 +61,11 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
 
         <div className='modal-hero'>
           <div className='modal-hero-content'>
-            <span className='modal-category'>{project.categories.join(', ')}</span>
-            <h2 className='modal-title'>{project.title}</h2>
-            <p className='modal-company'>{project.company}</p>
+            <div className='modal-hero-info'>
+              <span className='modal-category'>{project.categories.join(', ')}</span>
+              <h2 className='modal-title'>{project.title}</h2>
+              <p className='modal-company'>{project.company}</p>
+            </div>
 
             <div className='modal-actions'>
               {project.websiteUrl && (

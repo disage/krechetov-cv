@@ -11,6 +11,6 @@ export default defineConfig(({ command }) => ({
       },
     }),
   ],
-  // base: command === 'serve' ? '/' : '/krechetov-cv-2025/',
-  base: '/krechetov-cv-2025/',
+  // base: command === 'serve' ? '/' : '/krechetov-cv/',
+  base: '/krechetov-cv/',
 }));

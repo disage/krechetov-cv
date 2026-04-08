@@ -33,7 +33,7 @@ const Header: React.FC = () => {
       transition={{ duration: 0.8, ease: 'easeOut' }}
     >
       <div className='site-header-wrapper'>
-        <div className='logo'>KD</div>
+        <div className='logo'><img src='/krechetov-cv/avatar.jpg' alt='Dmytro Krechetov' /></div>
 
         <nav className='nav'>
           <a href='#about' onClick={(e) => handleNavClick(e, 'about')}>About</a>

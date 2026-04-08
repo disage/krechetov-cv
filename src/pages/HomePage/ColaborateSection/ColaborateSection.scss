@@ -8,6 +8,7 @@
   width: 100%;
   position: relative;
   max-width: 1440px;
+
   h2 {
     font-size: 3rem;
     margin-bottom: 20px;
@@ -29,13 +30,13 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    color: transparent; // Fallback
+    color: transparent;
   }
 
   &-action {
     position: relative;
     width: 100%;
-    height: 300px; // Fixed height to match background image natural size/intent
+    height: 300px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -50,7 +51,7 @@
       width: 100%;
       height: 100%;
       z-index: 1;
-      background-image: url('/krechetov-cv-2025/colaborate-image.png');
+      background-image: url('/krechetov-cv/colaborate-image.png');
       background-repeat: no-repeat;
       background-size: cover;
       background-position: center;
@@ -75,7 +76,7 @@
       height: 200px;
 
       &-bg {
-        background-image: url('/krechetov-cv-2025/colaborate-image-mobile.png') !important;
+        background-image: url('/krechetov-cv/colaborate-image-mobile.png') !important;
         background-size: contain;
         background-position: center bottom;
       }

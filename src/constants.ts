@@ -1,75 +1,125 @@
-export const skillsData = [
+export interface Skill {
+  name: string;
+  level: 'primary' | 'secondary';
+}
+
+export interface SkillGroup {
+  name: string;
+  skills: Skill[];
+}
+
+export interface SkillCategory {
+  category: string;
+  groups: SkillGroup[];
+}
+
+export const skillsData: SkillCategory[] = [
   {
-    area: 'Programming',
-    type: 'Frontend',
-    description: [
-      'HTML',
-      'SCSS',
-      'JavaScript',
-      'Vue 2-3',
-      'React',
-      'VueX',
-      'Pinia',
-      'Jest',
-      'Quasar',
-      'StoryBook',
-      'Handlebars',
-      'A11y',
-      'SEO',
+    category: 'Programming',
+    groups: [
+      {
+        name: 'Frontend',
+        skills: [
+          { name: 'React', level: 'primary' },
+          { name: 'TypeScript', level: 'primary' },
+          { name: 'Next.js', level: 'primary' },
+          { name: 'Vue', level: 'primary' },
+          { name: 'JavaScript', level: 'primary' },
+          { name: 'HTML', level: 'primary' },
+          { name: 'S/CSS', level: 'primary' },
+          { name: 'Quasar', level: 'secondary' },
+          { name: 'Storybook', level: 'secondary' },
+          { name: 'Tailwind', level: 'secondary' },
+          { name: 'MUI', level: 'secondary' },
+        ],
+      },
+      {
+        name: 'Backend',
+        skills: [
+          { name: 'FastAPI', level: 'primary' },
+          { name: 'Python', level: 'primary' },
+          { name: 'Node.js', level: 'primary' },
+          { name: 'REST API', level: 'primary' },
+          { name: 'SQL', level: 'primary' },
+          { name: 'PostgreSQL', level: 'primary' },
+          { name: 'LangChain / LangGraph', level: 'secondary' },
+          { name: 'Celery', level: 'secondary' },
+          { name: 'Redis', level: 'secondary' },
+        ],
+      },
+      {
+        name: 'Infrastructure',
+        skills: [
+          { name: 'AWS', level: 'primary' },
+          { name: 'Docker', level: 'primary' },
+          { name: 'Git', level: 'primary' },
+          { name: 'Lambda', level: 'secondary' },
+          { name: 'DynamoDB', level: 'secondary' },
+          { name: 'API Gateway', level: 'secondary' },
+          { name: 'Cognito', level: 'secondary' },
+          { name: 'EC2', level: 'secondary' },
+        ],
+      },
     ],
   },
   {
-    area: '',
-    type: 'Backend',
-    description: ['Node JS', 'Python', 'SQL', 'Nest JS', 'Prisma', 'Databases', 'Firebase'],
-  },
-  {
-    area: '',
-    type: 'Tools & Platforms',
-    description: ['AWS', 'GitHub', 'Jira', 'Moodle', 'Wordpress', 'Docker'],
-  },
-  {
-    area: 'Design',
-    type: 'UI/UX',
-    description: [
-      'Web & Mobile Interfaces',
-      'Wireframes',
-      'Prototypes',
-      'Design Systems',
-      'User Flows',
+    category: 'Design & Tools',
+    groups: [
+      {
+        name: 'UI/UX',
+        skills: [
+          { name: 'Web & Mobile Interfaces', level: 'primary' },
+          { name: 'Wireframes', level: 'primary' },
+          { name: 'Prototypes', level: 'primary' },
+          { name: 'Design Systems', level: 'primary' },
+          { name: 'User Flows', level: 'secondary' },
+        ],
+      },
+      {
+        name: 'Tools',
+        skills: [
+          { name: 'Figma', level: 'primary' },
+          { name: 'Jira', level: 'primary' },
+          { name: 'WordPress', level: 'secondary' },
+        ],
+      },
     ],
   },
   {
-    area: '',
-    type: 'Graphic Design',
-    description: ['Logos', 'Branding', 'Print Design', 'Social Media Assets', 'Presentations'],
+    category: 'Languages',
+    groups: [
+      {
+        name: 'Native',
+        skills: [
+          { name: 'Ukrainian', level: 'primary' },
+          { name: 'Russian', level: 'primary' },
+        ],
+      },
+      {
+        name: 'Fluent',
+        skills: [
+          { name: 'German — C1', level: 'primary' },
+          { name: 'English — B2', level: 'primary' },
+        ],
+      },
+      {
+        name: 'Basic',
+        skills: [{ name: 'Polish — A2', level: 'secondary' }],
+      },
+    ],
   },
   {
-    area: '',
-    type: 'Tools',
-    description: ['Figma', 'Canva', 'Photoshop', 'Lottielab', 'PowerPoint'],
-  },
-  {
-    area: 'Languages',
-    type: 'Native',
-    description: ['Ukrainian', 'Russian'],
-  },
-  {
-    area: '',
-    type: 'Working proficiency',
-    description: ['English', 'German'],
-  },
-  {
-    area: 'Soft Skills',
-    type: '',
-    description: [
-      'Effective Communication',
-      'Cross-Functional Collaboration',
-      'Feedback Handling',
-      'Agile Mindset',
-      'Remote Work',
-      'Discipline',
-      'Continuous Learning',
+    category: 'Soft Skills',
+    groups: [
+      {
+        name: '',
+        skills: [
+          { name: 'Analytical Thinking', level: 'primary' },
+          { name: 'Independent Work', level: 'primary' },
+          { name: 'Remote Teamwork', level: 'primary' },
+          { name: 'Quick Learner', level: 'primary' },
+        ],
+      },
     ],
   },
 ];
@@ -78,52 +128,76 @@ export const servicesData = [
   {
     area: 'Web Development',
     type: 'Full Cycle',
-    description: ['Frontend & Backend development', 'Performance optimization', 'A11y compliance'],
+    description: [
+      'Frontend & Backend development',
+      'Responsive websites & landing pages',
+      'CRM & internal tools',
+      'Performance optimization',
+    ],
+  },
+  {
+    area: 'Cloud & Infrastructure',
+    type: 'AWS',
+    description: [
+      'Serverless architecture (Lambda, API Gateway)',
+      'Database setup (DynamoDB, PostgreSQL)',
+      'Authentication (Cognito)',
+      'Docker containerization',
+    ],
   },
   {
     area: 'UI/UX Design',
     type: 'Product Design',
-    description: ['Prototypes', 'Wireframes', 'Design Systems', 'User Testing'],
+    description: ['Prototypes & Wireframes', 'Design Systems', 'Web & Mobile Interfaces'],
   },
   {
-    area: 'Branding',
-    type: 'Identity',
-    description: ['Logo design', 'Brand guidelines', 'Marketing materials'],
-  },
-  {
-    area: 'Consulting',
-    type: 'Strategy',
-    description: ['Product roadmap', 'Technical audit', 'Team mentoring'],
+    area: 'Automation',
+    type: 'Bots & Integrations',
+    description: [
+      'Telegram bots',
+      'CRM integrations',
+      'AI-powered data pipelines',
+      'Workflow automation',
+    ],
   },
 ];
 
 export const experienceData = [
   {
+    company: 'Aplora',
+    position: 'Full-Stack Developer',
+    period: 'Feb 2026 - Now',
+    description: [
+      'Building a full-stack AI-powered call analysis platform with React, FastAPI, LangGraph, and PostgreSQL. Interactive dashboards for funnel analytics and call evaluation. Containerized infrastructure with Docker Compose.',
+    ],
+    tags: ['React', 'FastAPI', 'AI', 'Docker'],
+  },
+  {
     company: 'TalentInsight',
     position: 'Web Developer',
-    period: 'Jun 2025 - Now',
+    period: 'Jul 2025 - Now',
     description: [
-      'Built and maintained a corporate website with LMS and automation features. Developed an internal CRM with automated workflows and invoicing using AWS serverless architecture.',
+      'Developed an internal CRM with React, TypeScript, and Tailwind — RBAC system with role-based data filtering. Designed and built a serverless AWS backend (Lambda, DynamoDB, API Gateway, Cognito). Sole developer responsible for the entire technical implementation.',
     ],
-    tags: ['WEB Dev', 'CRM', 'Design'],
+    tags: ['React', 'AWS', 'CRM'],
   },
   {
     company: 'Freelance',
     position: 'Web Developer',
-    period: 'Dec 2023 - Apr 2025',
+    period: 'May 2024 - Jan 2025',
     description: [
-      'Developed business websites and web applications from concept to deployment. Built Telegram bots with Python and implemented SEO strategies to improve online visibility.',
+      'Delivered client projects from concept to deployment — websites, landing pages, and custom web applications. Built Telegram bots for automating internal client processes, reducing manual effort by ~60%.',
     ],
-    tags: ['WEB Dev', 'SEO', 'Bots', 'Design'],
+    tags: ['WEB Dev', 'Bots', 'SEO'],
   },
   {
     company: 'Noer Agency',
     position: 'Frontend Developer',
     period: 'Nov 2021 - Sep 2023',
     description: [
-      'Built scalable LMS solutions and contributed to a large enterprise information platform with high performance and reliability requirements. Expanded a Storybook component library and implemented accessibility standards',
+      'Developed a SPA news & analytics platform with Vue, Vuex, and TypeScript in an international Scrum team. Built custom LMS modules on Adobe Captivate Prime API using Quasar Framework for 3+ tenants. Maintained and extended a Storybook component library.',
     ],
-    tags: ['WEB Dev'],
+    tags: ['Vue', 'TypeScript', 'LMS'],
   },
 ];
 
@@ -141,56 +215,60 @@ export const projectsData = [
   {
     categories: ['Websites'],
     title: 'Landing Page',
-    company: 'ZonArt',
+    company: 'ZonArt 🇬🇧',
     description:
       'ZON designs modern modular houses with smart architecture, fast delivery, and full customization.',
     fullDescription:
       'Developed a landing page for a modular house company, showcasing their innovative designs and services. The site features a clean, modern design with interactive elements to engage visitors and drive conversions. Implemented responsive design to ensure optimal viewing across all devices.',
     technologies: ['WordPress'],
     role: 'Lead Developer',
-    images: ['/krechetov-cv-2025/project-zonArt.png', '/krechetov-cv-2025/blue-element.png'],
-    websiteUrl: 'https://zon-group.com/',
+    images: [
+      '/krechetov-cv/projects/zon/zon1.jpg',
+      '/krechetov-cv/projects/zon/zon2.jpg',
+      '/krechetov-cv/projects/zon/zon3.jpg',
+      '/krechetov-cv/projects/zon/zon4.jpg',
+    ],
+    websiteUrl: 'https://zon-group.com/invest/',
   },
   {
     categories: ['Websites', 'UI / UX'],
     title: 'Corporate website',
-    company: 'UmzugsProfi',
+    company: 'UmzugsProfi 🇩🇪',
     description: 'High-performance online store with custom checkout flows.',
     fullDescription:
       'Built a robust e-commerce solution focusing on conversion optimization and speed. Implemented a custom checkout process, integrated multiple payment gateways, and developed a real-time inventory management system. Key focus was on mobile responsiveness and SEO performance.',
     technologies: ['WordPress', 'SEO'],
     role: 'Lead Developer, Designer',
     images: [
-      '/krechetov-cv-2025/projects/umzugsprofi/umzug1.jpeg',
-      '/krechetov-cv-2025/projects/umzugsprofi/umzug2.jpeg',
-      '/krechetov-cv-2025/projects/umzugsprofi/umzug3.jpeg',
-      '/krechetov-cv-2025/projects/umzugsprofi/umzug4.jpeg',
-      '/krechetov-cv-2025/projects/umzugsprofi/umzug5.jpeg',
+      '/krechetov-cv/projects/umzugsprofi/umzug1.jpeg',
+      '/krechetov-cv/projects/umzugsprofi/umzug2.jpeg',
+      '/krechetov-cv/projects/umzugsprofi/umzug3.jpeg',
+      '/krechetov-cv/projects/umzugsprofi/umzug4.jpeg',
+      '/krechetov-cv/projects/umzugsprofi/umzug5.jpeg',
     ],
     websiteUrl: 'https://umzugsprofi.net/',
   },
   {
     categories: ['Websites'],
     title: 'Orders CRM',
-    company: 'TalentInsight',
+    company: 'TalentInsight 🇨🇳🇩🇪',
     description: 'High-performance CRM  with custom flows',
     fullDescription:
       'Built a robust e-commerce solution focusing on conversion optimization and speed. Implemented a custom checkout process, integrated multiple payment gateways, and developed a real-time inventory management system. Key focus was on mobile responsiveness and SEO performance.',
     technologies: ['React', 'TS', 'AWS'],
     role: 'FullStack Developer',
-    images: ['/krechetov-cv-2025/blue-element.png'],
-    githubUrl: 'https://github.com/username/noer-shop',
+    images: ['/krechetov-cv/blue-element.png'],
   },
   {
     categories: ['Bots'],
     title: 'Management Bot',
-    company: 'TCC',
+    company: 'TCC 🇺🇦',
     description: 'AI-powered Telegram bot for automated customer inquiries.',
     fullDescription:
       'Developed an intelligent telegram bot to handle common customer support queries, reducing support ticket volume by 30%. The bot uses natural language processing to understand user intent and provides instant answers or routes complex issues to human agents.',
     technologies: ['Python', 'Telegram API', 'Telethon', 'SQLite'],
     role: 'Backend Developer',
-    images: ['/krechetov-cv-2025/blue-element.png'],
+    images: ['/krechetov-cv/blue-element.png'],
   },
   {
     categories: ['Bots'],
@@ -201,7 +279,7 @@ export const projectsData = [
       'Created a Telegram bot for tracking cryptocurrency prices in real-time. Users can set custom alerts, track their portfolio value, and receive daily market summaries. Built with a focus on low latency and high reliability.',
     technologies: ['Python', 'Telegram API', 'Telethon', 'SQLite'],
     role: 'Backend Developer',
-    images: ['/krechetov-cv-2025/blue-element.png'],
+    images: ['/krechetov-cv/blue-element.png'],
     websiteUrl: 'https://t.me/randomRestoBot',
   },
 ];
