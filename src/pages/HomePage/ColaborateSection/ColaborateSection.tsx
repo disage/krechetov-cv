@@ -148,9 +148,7 @@ const ColaborateSection = () => {
               <span className='contact-card-value'>@krechetov_dev</span>
               <span className='contact-card-desc'>Quick response via messenger</span>
             </a>
-
           </div>
-          <p className='contact-hint'>Usually respond within 2–4 hours during business hours</p>
         </div>
       </Modal>
     </motion.section>

@@ -257,7 +257,12 @@ export const projectsData = [
       'Built a robust e-commerce solution focusing on conversion optimization and speed. Implemented a custom checkout process, integrated multiple payment gateways, and developed a real-time inventory management system. Key focus was on mobile responsiveness and SEO performance.',
     technologies: ['React', 'TS', 'AWS'],
     role: 'FullStack Developer',
-    images: ['/krechetov-cv/blue-element.png'],
+    images: [
+      '/krechetov-cv/projects/ti/ti1.jpg',
+      '/krechetov-cv/projects/ti/ti2.jpg',
+      '/krechetov-cv/projects/ti/ti3.jpg',
+      '/krechetov-cv/projects/ti/ti4.jpg',
+    ],
   },
   {
     categories: ['Bots'],
