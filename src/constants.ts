@@ -203,6 +203,13 @@ export const experienceData = [
 
 export const educationData = [
   {
+    institution: 'Wyższa Szkoła Nauk Społecznych i Bezpieczeństwa',
+    degree: 'Bachelor`s in Internal Security (thesis pending)',
+    period: '2022 - 2025',
+    description: ['Internal Security'],
+    tags: ['Łódź, Poland'],
+  },
+  {
     institution: 'KROK University',
     degree: 'Junior Specialist Degree in Software Engineering',
     period: '2017 - 2021',
@@ -232,11 +239,11 @@ export const projectsData = [
   },
   {
     categories: ['Websites', 'UI / UX'],
-    title: 'Corporate website',
+    title: 'Corporate Website',
     company: 'UmzugsProfi 🇩🇪',
     description: 'High-performance online store with custom checkout flows.',
     fullDescription:
-      'Built a robust e-commerce solution focusing on conversion optimization and speed. Implemented a custom checkout process, integrated multiple payment gateways, and developed a real-time inventory management system. Key focus was on mobile responsiveness and SEO performance.',
+      'Built a WordPress website for a moving company, presenting their services and coverage areas. The site features a contact form for quote requests, clean layout optimized for trust and conversions, and full SEO configuration including meta tags, schema markup, and page speed optimization. Implemented responsive design for seamless browsing on all devices.',
     technologies: ['WordPress', 'SEO'],
     role: 'Lead Developer, Designer',
     images: [
@@ -279,9 +286,9 @@ export const projectsData = [
     categories: ['Bots'],
     title: 'Random Restaurant Picker',
     company: 'Restomania',
-    description: 'Real-time cryptocurrency price alerts and portfolio tracking.',
+    description: 'Telegram bot for discovering random restaurant',
     fullDescription:
-      'Created a Telegram bot for tracking cryptocurrency prices in real-time. Users can set custom alerts, track their portfolio value, and receive daily market summaries. Built with a focus on low latency and high reliability.',
+      'Built a Telegram bot using Telethon for discovering random restaurants based on user-selected filters — region, price range, cuisine type, and rating. Features include a gamification system where users earn points through activity in a linked Telegram channel, a referral program for organic growth, built-in giveaway management for launching and running contests, and a broadcast system for sending targeted messages to users.',
     technologies: ['Python', 'Telegram API', 'Telethon', 'SQLite'],
     role: 'Backend Developer',
     images: ['/krechetov-cv/blue-element.png'],

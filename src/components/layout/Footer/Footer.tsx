@@ -30,17 +30,25 @@ const Footer = () => {
         <span>Follow me:</span>
         <ul>
           <li>
-            <a href="https://www.instagram.com/kd_developer" target="_blank" rel="noopener noreferrer">
+            <a
+              href='https://www.instagram.com/kd_developer'
+              target='_blank'
+              rel='noopener noreferrer'
+            >
               <InstagramIcon className='social-media-icon' width={32} height={32} />
             </a>
           </li>
           <li>
-            <a href="https://github.com/disage" target="_blank" rel="noopener noreferrer">
+            <a href='https://github.com/disage' target='_blank' rel='noopener noreferrer'>
               <GithubIcon className='social-media-icon' width={32} height={32} />
             </a>
           </li>
           <li>
-            <a href="https://www.linkedin.com/in/calibur/" target="_blank" rel="noopener noreferrer">
+            <a
+              href='https://www.linkedin.com/in/dkrechetov/'
+              target='_blank'
+              rel='noopener noreferrer'
+            >
               <LinkedinIcon className='social-media-icon' width={32} height={32} />
             </a>
           </li>

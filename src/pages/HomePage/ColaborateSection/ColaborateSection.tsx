@@ -73,7 +73,7 @@ const ColaborateSection = () => {
             </li>
             <li>
               <a
-                href='https://www.linkedin.com/in/calibur/'
+                href='https://www.linkedin.com/in/dkrechetov/'
                 target='_blank'
                 rel='noopener noreferrer'
               >
