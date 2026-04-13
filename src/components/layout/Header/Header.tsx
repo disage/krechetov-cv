@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import gsap from 'gsap';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 import './Header.scss';
@@ -8,15 +9,23 @@ gsap.registerPlugin(ScrollToPlugin);
 
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { t, i18n } = useTranslation();
+
+  const currentLang = i18n.resolvedLanguage === 'de' ? 'de' : 'en';
+  const nextLang = currentLang === 'en' ? 'de' : 'en';
+
+  const handleLangToggle = () => {
+    i18n.changeLanguage(nextLang);
+  };
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
     e.preventDefault();
     setIsOpen(false);
-    
+
     // Find the target element
     const targetElement = document.getElementById(targetId);
     if (!targetElement) return;
-    
+
     // Use GSAP ScrollToPlugin for smooth scroll
     gsap.to(window, {
       scrollTo: { y: targetElement, offsetY: 100 },
@@ -26,7 +35,7 @@ const Header: React.FC = () => {
   };
 
   return (
-    <motion.header 
+    <motion.header
       className={`site-header ${isOpen ? 'open' : ''}`}
       initial={{ y: -100, x: '-50%', opacity: 0 }}
       animate={{ y: 0, x: '-50%', opacity: 1 }}
@@ -36,14 +45,21 @@ const Header: React.FC = () => {
         <div className='logo'><img src='/krechetov-cv/avatar.jpg' alt='Dmytro Krechetov' /></div>
 
         <nav className='nav'>
-          <a href='#about' onClick={(e) => handleNavClick(e, 'about')}>About</a>
-          <a href='#skills' onClick={(e) => handleNavClick(e, 'skills')}>Skills</a>
-          <a href='#experience' onClick={(e) => handleNavClick(e, 'experience')}>Experience</a>
-          <a href='#projects' onClick={(e) => handleNavClick(e, 'projects')}>Projects</a>
-          <a href='#contact' onClick={(e) => handleNavClick(e, 'contact')}>Contact</a>
+          <a href='#about' onClick={(e) => handleNavClick(e, 'about')}>{t('header.nav.about')}</a>
+          <a href='#skills' onClick={(e) => handleNavClick(e, 'skills')}>{t('header.nav.skills')}</a>
+          <a href='#experience' onClick={(e) => handleNavClick(e, 'experience')}>{t('header.nav.experience')}</a>
+          <a href='#projects' onClick={(e) => handleNavClick(e, 'projects')}>{t('header.nav.projects')}</a>
+          <a href='#contact' onClick={(e) => handleNavClick(e, 'contact')}>{t('header.nav.contact')}</a>
         </nav>
 
-        <div className='language'>En</div>
+        <button
+          type='button'
+          className='language'
+          onClick={handleLangToggle}
+          aria-label={`Switch language to ${nextLang.toUpperCase()}`}
+        >
+          {t(`header.langToggle.${currentLang}`)}
+        </button>
 
         <div className='hamburger-menu' onClick={() => setIsOpen(!isOpen)}>
           {isOpen ? (
@@ -63,35 +79,29 @@ const Header: React.FC = () => {
 
       <div className='mobile-menu'>
         <a href='#about' onClick={(e) => handleNavClick(e, 'about')}>
-          About
+          {t('header.nav.about')}
         </a>
         <a href='#skills' onClick={(e) => handleNavClick(e, 'skills')}>
-          Skills
+          {t('header.nav.skills')}
         </a>
         <a href='#experience' onClick={(e) => handleNavClick(e, 'experience')}>
-          Experience
+          {t('header.nav.experience')}
         </a>
         <a href='#projects' onClick={(e) => handleNavClick(e, 'projects')}>
-          Projects
+          {t('header.nav.projects')}
         </a>
         <a href='#contact' onClick={(e) => handleNavClick(e, 'contact')}>
-          Contact
+          {t('header.nav.contact')}
         </a>
 
-        <div className='follow'>
-          <p>Follow me</p>
-          <div className='socials'>
-            <a href='https://github.com/' target='_blank' rel='noreferrer'>
-              🐙
-            </a>
-            <a href='https://linkedin.com/' target='_blank' rel='noreferrer'>
-              💼
-            </a>
-            <a href='https://twitter.com/' target='_blank' rel='noreferrer'>
-              🐦
-            </a>
-          </div>
-        </div>
+        <button
+          type='button'
+          className='mobile-language'
+          onClick={handleLangToggle}
+          aria-label={`Switch language to ${nextLang.toUpperCase()}`}
+        >
+          {t(`header.langToggle.${currentLang}`)}
+        </button>
       </div>
     </motion.header>
   );

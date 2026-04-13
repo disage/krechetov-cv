@@ -1,15 +1,20 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import './SkillsSection.scss';
-import { skillsData, servicesData } from '../../../constants';
+import { useLocalizedSkills, useLocalizedServices } from '../../../hooks/useLocalizedData';
 import Tabs from '../../../components/ui/Tabs/Tabs';
 
-const SKILLS_TABS = [
-  { label: 'Skills', value: 'skills' },
-  { label: 'Services', value: 'services' },
-];
-
 const SkillsSection = () => {
+  const { t } = useTranslation();
+  const skills = useLocalizedSkills();
+  const services = useLocalizedServices();
+
+  const skillsTabs = [
+    { label: t('skills.tabs.skills'), value: 'skills' },
+    { label: t('skills.tabs.services'), value: 'services' },
+  ];
+
   const [activeTab, setActiveTab] = React.useState('skills');
 
   const handleTabChange = (tab: string) => {
@@ -26,7 +31,7 @@ const SkillsSection = () => {
         transition={{ duration: 0.8, ease: 'easeOut' }}
       >
         <Tabs
-          tabs={SKILLS_TABS}
+          tabs={skillsTabs}
           activeTab={activeTab}
           onTabChange={handleTabChange}
           className='skills-tabs-container'
@@ -34,12 +39,12 @@ const SkillsSection = () => {
 
         {activeTab === 'skills' ? (
           <div className='skills-grid'>
-            {skillsData.map((category) => (
-              <div className='skill-card' key={category.category}>
+            {skills.map((category) => (
+              <div className='skill-card' key={category.id}>
                 <h3 className='skill-card-title'>{category.category}</h3>
                 <div className='skill-card-groups'>
-                  {category.groups.map((group) => (
-                    <div className='skill-group' key={group.name || 'default'}>
+                  {category.groups.map((group, gIdx) => (
+                    <div className='skill-group' key={group.id || `default-${gIdx}`}>
                       {group.name && (
                         <span className='skill-group-label'>{group.name}</span>
                       )}
@@ -61,15 +66,15 @@ const SkillsSection = () => {
           </div>
         ) : (
           <div className='services-grid'>
-            {servicesData.map((service) => (
-              <div className='service-card' key={service.area}>
+            {services.map((service) => (
+              <div className='service-card' key={service.id}>
                 <div className='service-card-header'>
                   <h3 className='service-card-title'>{service.area}</h3>
                   <span className='service-card-type'>{service.type}</span>
                 </div>
                 <ul className='service-card-list'>
-                  {service.description.map((item) => (
-                    <li key={item}>{item}</li>
+                  {service.description.map((item, i) => (
+                    <li key={i}>{item}</li>
                   ))}
                 </ul>
               </div>

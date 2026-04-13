@@ -1,0 +1,219 @@
+{
+  "header": {
+    "nav": {
+      "about": "Über mich",
+      "skills": "Skills",
+      "experience": "Erfahrung",
+      "projects": "Projekte",
+      "contact": "Kontakt"
+    },
+    "followMe": "Folge mir",
+    "langToggle": {
+      "en": "En",
+      "de": "De"
+    }
+  },
+  "footer": {
+    "followMe": "Folge mir:"
+  },
+  "hero": {
+    "greeting": "Hi, ich bin",
+    "name": "Dmytro",
+    "subtitle": "Ein Webentwickler mit Leidenschaft für digitale Erlebnisse, die wirklich Ergebnisse liefern",
+    "scroll": "Scrollen"
+  },
+  "about": {
+    "p1": "Ich bin ein <1>Webentwickler</1>, der sich auf responsive, benutzerfreundliche Websites mit modernen Technologien spezialisiert hat.",
+    "p2": "Ich liebe es, Ideen in sauberen, effizienten Code zu verwandeln und immer <1>reibungslose digitale Erlebnisse</1> zu schaffen."
+  },
+  "journey": {
+    "title": "Entdecke meinen Entwickler-<1>Werdegang</1>",
+    "subtitle": "In den letzten 4 Jahren habe ich mit unterschiedlichen Teams und Kunden an einer Vielzahl von Projekten gearbeitet — und kreative Ideen in wirkungsvolle digitale Erlebnisse verwandelt.",
+    "tabs": {
+      "work": "Beruf",
+      "education": "Ausbildung"
+    }
+  },
+  "projects": {
+    "title": "Sieh, was ich <1>gebaut</1> habe",
+    "subtitle": "Eine Auswahl meiner besten Arbeiten — gestaltet mit Kreativität, Strategie und Liebe zum Detail.",
+    "categories": {
+      "websites": "Webseiten",
+      "ui_ux": "UI / UX",
+      "bots": "Bots"
+    },
+    "modal": {
+      "overview": "Überblick",
+      "role": "Rolle",
+      "techStack": "Tech Stack",
+      "visitWebsite": "Webseite besuchen ↗",
+      "viewCode": "Code ansehen"
+    }
+  },
+  "skills": {
+    "tabs": {
+      "skills": "Skills",
+      "services": "Leistungen"
+    },
+    "modal": {
+      "allSkills": "Alle Skills",
+      "allServices": "Alle Leistungen"
+    },
+    "categories": {
+      "programming": "Programmierung",
+      "designTools": "Design & Tools",
+      "languages": "Sprachen",
+      "softSkills": "Soft Skills"
+    },
+    "groups": {
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "infrastructure": "Infrastruktur",
+      "uiUx": "UI/UX",
+      "tools": "Tools",
+      "native": "Muttersprache",
+      "fluent": "Fließend",
+      "basic": "Grundkenntnisse"
+    },
+    "items": {
+      "webMobileInterfaces": "Web- & Mobile-Interfaces",
+      "wireframes": "Wireframes",
+      "prototypes": "Prototypen",
+      "designSystems": "Design Systeme",
+      "userFlows": "User Flows",
+      "ukrainian": "Ukrainisch",
+      "russian": "Russisch",
+      "germanC1": "Deutsch — C1",
+      "englishB2": "Englisch — B2",
+      "polishA2": "Polnisch — A2",
+      "analyticalThinking": "Analytisches Denken",
+      "independentWork": "Eigenständiges Arbeiten",
+      "remoteTeamwork": "Remote-Teamarbeit",
+      "quickLearner": "Schnelle Auffassungsgabe"
+    }
+  },
+  "services": {
+    "webDev": {
+      "area": "Webentwicklung",
+      "type": "Full Cycle",
+      "description": [
+        "Frontend- & Backend-Entwicklung",
+        "Responsive Websites & Landing Pages",
+        "CRM & interne Tools",
+        "Performance-Optimierung"
+      ]
+    },
+    "cloud": {
+      "area": "Cloud & Infrastruktur",
+      "type": "AWS",
+      "description": [
+        "Serverless-Architektur (Lambda, API Gateway)",
+        "Datenbank-Setup (DynamoDB, PostgreSQL)",
+        "Authentifizierung (Cognito)",
+        "Docker-Containerisierung"
+      ]
+    },
+    "uiux": {
+      "area": "UI/UX-Design",
+      "type": "Produktdesign",
+      "description": [
+        "Prototypen & Wireframes",
+        "Design Systeme",
+        "Web- & Mobile-Interfaces"
+      ]
+    },
+    "automation": {
+      "area": "Automatisierung",
+      "type": "Bots & Integrationen",
+      "description": [
+        "Telegram-Bots",
+        "CRM-Integrationen",
+        "KI-gestützte Datenpipelines",
+        "Workflow-Automatisierung"
+      ]
+    }
+  },
+  "experience": {
+    "now": "Jetzt",
+    "aplora": {
+      "position": "Full-Stack Entwickler",
+      "description": [
+        "Aufbau einer Full-Stack-KI-Plattform zur Anrufanalyse mit React, FastAPI, LangGraph und PostgreSQL. Interaktive Dashboards für Funnel-Analysen und Anrufbewertung. Containerisierte Infrastruktur mit Docker Compose."
+      ]
+    },
+    "talentInsight": {
+      "position": "Webentwickler",
+      "description": [
+        "Entwicklung eines internen CRM mit React, TypeScript und Tailwind — RBAC-System mit rollenbasierter Datenfilterung. Konzeption und Aufbau eines serverlosen AWS-Backends (Lambda, DynamoDB, API Gateway, Cognito). Alleiniger Entwickler, verantwortlich für die gesamte technische Umsetzung."
+      ]
+    },
+    "freelance": {
+      "position": "Webentwickler",
+      "description": [
+        "Umsetzung von Kundenprojekten von der Idee bis zum Deployment — Webseiten, Landing Pages und individuelle Webanwendungen. Entwicklung von Telegram-Bots zur Automatisierung interner Kundenprozesse, wodurch der manuelle Aufwand um ~60 % reduziert wurde."
+      ]
+    },
+    "noer": {
+      "position": "Frontend Entwickler",
+      "description": [
+        "Entwicklung einer SPA-Plattform für Nachrichten und Analysen mit Vue, Vuex und TypeScript in einem internationalen Scrum-Team. Aufbau individueller LMS-Module auf Basis der Adobe Captivate Prime API mit dem Quasar Framework für 3+ Mandanten. Pflege und Erweiterung einer Storybook-Komponentenbibliothek."
+      ]
+    }
+  },
+  "education": {
+    "wsnsib": {
+      "degree": "Bachelor in Innerer Sicherheit (Abschlussarbeit ausstehend)",
+      "description": ["Innere Sicherheit"],
+      "city": "Łódź, Polen"
+    },
+    "krok": {
+      "degree": "Junior-Spezialist Abschluss in Software Engineering",
+      "description": ["Spezialisierung auf die Entwicklung von Webanwendungen und Datenbanken."],
+      "city": "Kiew, Ukraine"
+    }
+  },
+  "projectsData": {
+    "zon": {
+      "title": "Landing Page",
+      "description": "ZON entwirft moderne modulare Häuser mit smarter Architektur, schneller Lieferung und vollständiger Anpassung.",
+      "fullDescription": "Entwicklung einer Landing Page für ein Unternehmen für modulare Häuser, das seine innovativen Designs und Dienstleistungen präsentiert. Die Seite zeichnet sich durch ein klares, modernes Design mit interaktiven Elementen aus, die Besucher binden und Conversions fördern. Responsives Design für eine optimale Darstellung auf allen Geräten.",
+      "role": "Lead Entwickler"
+    },
+    "umzugsprofi": {
+      "title": "Unternehmenswebseite",
+      "description": "Performante WordPress-Webseite mit individuellem Design.",
+      "fullDescription": "Erstellung einer WordPress-Webseite für ein Umzugsunternehmen, das seine Dienstleistungen und Einsatzgebiete präsentiert. Die Seite enthält ein Kontaktformular für Angebotsanfragen, ein klares, auf Vertrauen und Conversions optimiertes Layout sowie eine vollständige SEO-Konfiguration mit Meta-Tags, Schema Markup und Page-Speed-Optimierung. Responsives Design für ein nahtloses Surfen auf allen Geräten.",
+      "role": "Lead Entwickler, Designer"
+    },
+    "talentInsightCrm": {
+      "title": "Auftrags-CRM",
+      "description": "Performantes CRM mit individuellen Workflows.",
+      "fullDescription": "TalentInsight Orders CRM — ein webbasiertes CRM zur Verwaltung von Aufträgen, Kunden und Trainern in der Branche der Unternehmensschulungen. Funktionen umfassen ein Vertriebs-Analytics-Dashboard, einen Sitzungskalender, PDF-Rechnungserstellung, rollenbasierte Zugriffskontrolle und Mehrwährungsunterstützung. Stack: React 19, TypeScript, Tailwind CSS, AWS (Cognito, API Gateway, Lambda, DynamoDB, S3), Vite.",
+      "role": "FullStack Entwickler"
+    },
+    "tccBot": {
+      "title": "Management-Bot",
+      "description": "Telegram-Bot zur Verwaltung von YouTube-Produktionsteams.",
+      "fullDescription": "Entwicklung eines Telegram-Bots mit Telethon zur Verwaltung von YouTube-Content-Produktionsteams — ein rollenbasiertes Workflow-System, das Manager, Drehbuchautoren, Kameraleute, Editoren und Thumbnail-Designer über mehrere Kanäle hinweg koordiniert. Funktionen: Aufgabenzuweisung mit Deadlines und individueller Vergütung pro Aufgabe, automatisches Erinnerungssystem mit eskalierenden Benachrichtigungen (6h/4h/2h/1h/30min vor Fälligkeit), Gehalts- und Bonusverwaltung mit Mehrwährungsunterstützung (USD/UAH), Spesenerfassung pro Kanal sowie ein Qualitätskontroll-Fehlerprotokoll, das Fehler mit konkreten Aufgaben, Videos und verantwortlichen Teammitgliedern verknüpft.",
+      "role": "Backend Entwickler"
+    },
+    "restomania": {
+      "title": "Zufalls-Restaurant-Finder",
+      "description": "Telegram-Bot zum Entdecken zufälliger Restaurants.",
+      "fullDescription": "Entwicklung eines Telegram-Bots für 4.000+ Nutzer mit Telethon zum Entdecken zufälliger Restaurants nach benutzerdefinierten Filtern — Region, Preisklasse, Küchenrichtung und Bewertung. Funktionen: ein Gamification-System, bei dem Nutzer durch Aktivität in einem verknüpften Telegram-Kanal Punkte sammeln, ein Empfehlungsprogramm für organisches Wachstum, integrierte Gewinnspielverwaltung sowie ein Broadcast-System für gezielte Nachrichten an Nutzer.",
+      "role": "Backend Entwickler"
+    }
+  },
+  "collaborate": {
+    "title": "Lass uns <1>zusammenarbeiten</1>",
+    "intro": "Bereit, dein digitales Spiel auf das nächste Level zu heben? Ich verbinde kreatives Denken mit technischer Expertise, um Unternehmen dabei zu helfen, stärkere digitale Erlebnisse zu schaffen, die konvertieren.",
+    "cta": "Kontakt aufnehmen",
+    "modalTitle": "<1>Kontakt</1> aufnehmen",
+    "languageNote": "Du kannst mich gerne auf Deutsch, Englisch, Ukrainisch oder Russisch erreichen.",
+    "myRole": "Webentwickler",
+    "emailMe": "Schreib mir",
+    "emailDesc": "Ich beantworte gerne deine Fragen",
+    "telegram": "Telegram",
+    "telegramDesc": "Schnelle Antwort per Messenger"
+  }
+}

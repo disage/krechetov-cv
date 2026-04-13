@@ -1,15 +1,24 @@
 import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Trans, useTranslation } from 'react-i18next';
 import './ProjectsSection.scss';
-import { projectsData } from '../../../constants';
+import { useLocalizedProjects, type LocalizedProject } from '../../../hooks/useLocalizedData';
 import ProjectModal from './ProjectModal';
 import Tabs from '../../../components/ui/Tabs/Tabs';
 
-const TABS = ['Websites', 'UI / UX', 'Bots'];
+const TAB_IDS = ['websites', 'ui_ux', 'bots'] as const;
 
 const ProjectsSection: React.FC = () => {
-  const [activeTab, setActiveTab] = useState(TABS[0]);
-  const [selectedProject, setSelectedProject] = useState<(typeof projectsData)[0] | null>(null);
+  const { t } = useTranslation();
+  const projects = useLocalizedProjects();
+
+  const tabs = TAB_IDS.map((id) => ({
+    label: t(`projects.categories.${id}`),
+    value: id,
+  }));
+
+  const [activeTab, setActiveTab] = useState<string>(TAB_IDS[0]);
+  const [selectedProject, setSelectedProject] = useState<LocalizedProject | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -27,10 +36,10 @@ const ProjectsSection: React.FC = () => {
   }, [activeTab]);
 
   const filteredProjects = useMemo(() => {
-    return projectsData.filter((project) => project.categories.includes(activeTab));
-  }, [activeTab]);
+    return projects.filter((project) => project.categories.includes(activeTab));
+  }, [activeTab, projects]);
 
-  const handleOpenModal = (project: (typeof projectsData)[0]) => {
+  const handleOpenModal = (project: LocalizedProject) => {
     setSelectedProject(project);
     setIsModalOpen(true);
   };
@@ -43,7 +52,7 @@ const ProjectsSection: React.FC = () => {
   return (
     <section className='projects-section' id='projects'>
       <div className='projects-container'>
-        <motion.div 
+        <motion.div
           className='projects-header'
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -51,14 +60,12 @@ const ProjectsSection: React.FC = () => {
           transition={{ duration: 0.8, ease: 'easeOut' }}
         >
           <h2 className='section-title'>
-            See What I've <span className='highlight'>Built</span>
+            <Trans i18nKey='projects.title' components={{ 1: <span className='highlight' /> }} />
           </h2>
-          <p className='section-subtitle'>
-            A showcase of my best work — crafted with creativity, strategy, and attention to detail.
-          </p>
+          <p className='section-subtitle'>{t('projects.subtitle')}</p>
 
           <Tabs
-            tabs={TABS}
+            tabs={tabs}
             activeTab={activeTab}
             onTabChange={setActiveTab}
             className='projects-tabs'
@@ -66,7 +73,7 @@ const ProjectsSection: React.FC = () => {
         </motion.div>
 
         {isMobile ? (
-          <motion.div 
+          <motion.div
             className='projects-mobile-slider'
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -75,7 +82,7 @@ const ProjectsSection: React.FC = () => {
             <AnimatePresence mode='wait'>
               {filteredProjects.length > 0 && (
                 <motion.div
-                  key={filteredProjects[currentSlide].title}
+                  key={filteredProjects[currentSlide].id}
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -20 }}
@@ -133,9 +140,9 @@ const ProjectsSection: React.FC = () => {
         ) : (
           <div className='projects-grid'>
             {filteredProjects.map((project) => (
-              <motion.div 
-                key={project.title} 
-                className='project-card' 
+              <motion.div
+                key={project.id}
+                className='project-card'
                 onClick={() => handleOpenModal(project)}
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}

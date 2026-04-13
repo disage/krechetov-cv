@@ -1,9 +1,9 @@
 import React from 'react';
 import { createPortal } from 'react-dom';
+import { useTranslation } from 'react-i18next';
 import './SkillsModal.scss';
-import Button from '../../../components/ui/Button/Button';
 import Tabs from '../../../components/ui/Tabs/Tabs';
-import { skillsData, servicesData } from '../../../constants';
+import { useLocalizedSkills, useLocalizedServices } from '../../../hooks/useLocalizedData';
 
 interface SkillsModalProps {
   isOpen: boolean;
@@ -11,13 +11,16 @@ interface SkillsModalProps {
   initialTab?: 'skills' | 'services';
 }
 
-const SKILLS_TABS = [
-  { label: 'Skills', value: 'skills' },
-  { label: 'Services', value: 'services' },
-];
-
 const SkillsModal: React.FC<SkillsModalProps> = ({ isOpen, onClose, initialTab = 'skills' }) => {
+  const { t } = useTranslation();
+  const skills = useLocalizedSkills();
+  const services = useLocalizedServices();
   const [activeTab, setActiveTab] = React.useState<'skills' | 'services'>(initialTab);
+
+  const skillsTabs = [
+    { label: t('skills.tabs.skills'), value: 'skills' },
+    { label: t('skills.tabs.services'), value: 'services' },
+  ];
 
   React.useEffect(() => {
     setActiveTab(initialTab);
@@ -36,8 +39,6 @@ const SkillsModal: React.FC<SkillsModalProps> = ({ isOpen, onClose, initialTab =
 
   if (!isOpen) return null;
 
-  const currentData = activeTab === 'skills' ? skillsData : servicesData;
-
   const handleTabChange = (tab: string) => {
     setActiveTab(tab as 'skills' | 'services');
   };
@@ -46,10 +47,10 @@ const SkillsModal: React.FC<SkillsModalProps> = ({ isOpen, onClose, initialTab =
     <div className="skills-modal-overlay" onClick={onClose}>
       <div className="skills-modal-content" onClick={(e) => e.stopPropagation()}>
         <div className="skills-modal-header">
-          <h2>All {activeTab === 'skills' ? 'Skills' : 'Services'}</h2>
-          <button 
-            className="skills-modal-close" 
-            onClick={onClose} 
+          <h2>{activeTab === 'skills' ? t('skills.modal.allSkills') : t('skills.modal.allServices')}</h2>
+          <button
+            className="skills-modal-close"
+            onClick={onClose}
             aria-label="Close modal"
             type="button"
           >
@@ -58,7 +59,7 @@ const SkillsModal: React.FC<SkillsModalProps> = ({ isOpen, onClose, initialTab =
         </div>
 
         <Tabs
-          tabs={SKILLS_TABS}
+          tabs={skillsTabs}
           activeTab={activeTab}
           onTabChange={handleTabChange}
           className="skills-modal-tabs"
@@ -66,15 +67,25 @@ const SkillsModal: React.FC<SkillsModalProps> = ({ isOpen, onClose, initialTab =
 
         <div className="skills-modal-body">
           <div className="skills-table">
-
-
-            {currentData.map((row, index) => (
-              <div className="skills-row" key={index}>
-                <div className="area">{row.area}</div>
-                {row.type ? <div className="type">{row.type}</div> : <div></div>}
-                <div className="desc">{row.description.join(', ')}</div>
-              </div>
-            ))}
+            {activeTab === 'services'
+              ? services.map((row) => (
+                  <div className="skills-row" key={row.id}>
+                    <div className="area">{row.area}</div>
+                    <div className="type">{row.type}</div>
+                    <div className="desc">{row.description.join(', ')}</div>
+                  </div>
+                ))
+              : skills.flatMap((category) =>
+                  category.groups.map((group, gIdx) => (
+                    <div className="skills-row" key={`${category.id}-${group.id || gIdx}`}>
+                      <div className="area">{category.category}</div>
+                      <div className="type">{group.name}</div>
+                      <div className="desc">
+                        {group.skills.map((s) => s.name).join(', ')}
+                      </div>
+                    </div>
+                  ))
+                )}
           </div>
         </div>
       </div>

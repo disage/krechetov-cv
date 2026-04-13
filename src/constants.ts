@@ -1,24 +1,25 @@
 export interface Skill {
+  id?: string;
   name: string;
   level: 'primary' | 'secondary';
 }
 
 export interface SkillGroup {
-  name: string;
+  id: string;
   skills: Skill[];
 }
 
 export interface SkillCategory {
-  category: string;
+  id: string;
   groups: SkillGroup[];
 }
 
 export const skillsData: SkillCategory[] = [
   {
-    category: 'Programming',
+    id: 'programming',
     groups: [
       {
-        name: 'Frontend',
+        id: 'frontend',
         skills: [
           { name: 'React', level: 'primary' },
           { name: 'TypeScript', level: 'primary' },
@@ -34,7 +35,7 @@ export const skillsData: SkillCategory[] = [
         ],
       },
       {
-        name: 'Backend',
+        id: 'backend',
         skills: [
           { name: 'FastAPI', level: 'primary' },
           { name: 'Python', level: 'primary' },
@@ -48,7 +49,7 @@ export const skillsData: SkillCategory[] = [
         ],
       },
       {
-        name: 'Infrastructure',
+        id: 'infrastructure',
         skills: [
           { name: 'AWS', level: 'primary' },
           { name: 'Docker', level: 'primary' },
@@ -63,20 +64,20 @@ export const skillsData: SkillCategory[] = [
     ],
   },
   {
-    category: 'Design & Tools',
+    id: 'designTools',
     groups: [
       {
-        name: 'UI/UX',
+        id: 'uiUx',
         skills: [
-          { name: 'Web & Mobile Interfaces', level: 'primary' },
-          { name: 'Wireframes', level: 'primary' },
-          { name: 'Prototypes', level: 'primary' },
-          { name: 'Design Systems', level: 'primary' },
-          { name: 'User Flows', level: 'secondary' },
+          { id: 'webMobileInterfaces', name: 'Web & Mobile Interfaces', level: 'primary' },
+          { id: 'wireframes', name: 'Wireframes', level: 'primary' },
+          { id: 'prototypes', name: 'Prototypes', level: 'primary' },
+          { id: 'designSystems', name: 'Design Systems', level: 'primary' },
+          { id: 'userFlows', name: 'User Flows', level: 'secondary' },
         ],
       },
       {
-        name: 'Tools',
+        id: 'tools',
         skills: [
           { name: 'Figma', level: 'primary' },
           { name: 'Jira', level: 'primary' },
@@ -86,149 +87,123 @@ export const skillsData: SkillCategory[] = [
     ],
   },
   {
-    category: 'Languages',
+    id: 'languages',
     groups: [
       {
-        name: 'Native',
+        id: 'native',
         skills: [
-          { name: 'Ukrainian', level: 'primary' },
-          { name: 'Russian', level: 'primary' },
+          { id: 'ukrainian', name: 'Ukrainian', level: 'primary' },
+          { id: 'russian', name: 'Russian', level: 'primary' },
         ],
       },
       {
-        name: 'Fluent',
+        id: 'fluent',
         skills: [
-          { name: 'German — C1', level: 'primary' },
-          { name: 'English — B2', level: 'primary' },
+          { id: 'germanC1', name: 'German — C1', level: 'primary' },
+          { id: 'englishB2', name: 'English — B2', level: 'primary' },
         ],
       },
       {
-        name: 'Basic',
-        skills: [{ name: 'Polish — A2', level: 'secondary' }],
+        id: 'basic',
+        skills: [{ id: 'polishA2', name: 'Polish — A2', level: 'secondary' }],
       },
     ],
   },
   {
-    category: 'Soft Skills',
+    id: 'softSkills',
     groups: [
       {
-        name: '',
+        id: '',
         skills: [
-          { name: 'Analytical Thinking', level: 'primary' },
-          { name: 'Independent Work', level: 'primary' },
-          { name: 'Remote Teamwork', level: 'primary' },
-          { name: 'Quick Learner', level: 'primary' },
+          { id: 'analyticalThinking', name: 'Analytical Thinking', level: 'primary' },
+          { id: 'independentWork', name: 'Independent Work', level: 'primary' },
+          { id: 'remoteTeamwork', name: 'Remote Teamwork', level: 'primary' },
+          { id: 'quickLearner', name: 'Quick Learner', level: 'primary' },
         ],
       },
     ],
   },
 ];
 
-export const servicesData = [
-  {
-    area: 'Web Development',
-    type: 'Full Cycle',
-    description: [
-      'Frontend & Backend development',
-      'Responsive websites & landing pages',
-      'CRM & internal tools',
-      'Performance optimization',
-    ],
-  },
-  {
-    area: 'Cloud & Infrastructure',
-    type: 'AWS',
-    description: [
-      'Serverless architecture (Lambda, API Gateway)',
-      'Database setup (DynamoDB, PostgreSQL)',
-      'Authentication (Cognito)',
-      'Docker containerization',
-    ],
-  },
-  {
-    area: 'UI/UX Design',
-    type: 'Product Design',
-    description: ['Prototypes & Wireframes', 'Design Systems', 'Web & Mobile Interfaces'],
-  },
-  {
-    area: 'Automation',
-    type: 'Bots & Integrations',
-    description: [
-      'Telegram bots',
-      'CRM integrations',
-      'AI-powered data pipelines',
-      'Workflow automation',
-    ],
-  },
+export interface ServiceEntry {
+  id: string;
+}
+
+export const servicesData: ServiceEntry[] = [
+  { id: 'webDev' },
+  { id: 'cloud' },
+  { id: 'uiux' },
+  { id: 'automation' },
 ];
 
-export const experienceData = [
+export interface ExperienceEntry {
+  id: string;
+  company: string;
+  period: string;
+  tags: string[];
+}
+
+export const experienceData: ExperienceEntry[] = [
   {
+    id: 'aplora',
     company: 'Aplora',
-    position: 'Full-Stack Developer',
-    period: 'Feb 2026 - Now',
-    description: [
-      'Building a full-stack AI-powered call analysis platform with React, FastAPI, LangGraph, and PostgreSQL. Interactive dashboards for funnel analytics and call evaluation. Containerized infrastructure with Docker Compose.',
-    ],
+    period: 'Feb 2026 - {{now}}',
     tags: ['React', 'FastAPI', 'AI', 'Docker'],
   },
   {
+    id: 'talentInsight',
     company: 'TalentInsight',
-    position: 'Web Developer',
-    period: 'Jul 2025 - Now',
-    description: [
-      'Developed an internal CRM with React, TypeScript, and Tailwind — RBAC system with role-based data filtering. Designed and built a serverless AWS backend (Lambda, DynamoDB, API Gateway, Cognito). Sole developer responsible for the entire technical implementation.',
-    ],
+    period: 'Jul 2025 - {{now}}',
     tags: ['React', 'AWS', 'CRM'],
   },
   {
+    id: 'freelance',
     company: 'Freelance',
-    position: 'Web Developer',
     period: 'May 2024 - Jan 2025',
-    description: [
-      'Delivered client projects from concept to deployment — websites, landing pages, and custom web applications. Built Telegram bots for automating internal client processes, reducing manual effort by ~60%.',
-    ],
     tags: ['WEB Dev', 'Bots', 'SEO'],
   },
   {
+    id: 'noer',
     company: 'Noer Agency',
-    position: 'Frontend Developer',
     period: 'Nov 2021 - Sep 2023',
-    description: [
-      'Developed a SPA news & analytics platform with Vue, Vuex, and TypeScript in an international Scrum team. Built custom LMS modules on Adobe Captivate Prime API using Quasar Framework for 3+ tenants. Maintained and extended a Storybook component library.',
-    ],
     tags: ['Vue', 'TypeScript', 'LMS'],
   },
 ];
 
-export const educationData = [
+export interface EducationEntry {
+  id: string;
+  institution: string;
+  period: string;
+}
+
+export const educationData: EducationEntry[] = [
   {
+    id: 'wsnsib',
     institution: 'Wyższa Szkoła Nauk Społecznych i Bezpieczeństwa',
-    degree: 'Bachelor`s in Internal Security (thesis pending)',
     period: '2022 - 2025',
-    description: ['Internal Security'],
-    tags: ['Łódź, Poland'],
   },
   {
+    id: 'krok',
     institution: 'KROK University',
-    degree: 'Junior Specialist Degree in Software Engineering',
     period: '2017 - 2021',
-    description: ['Specialized in development of web applications and databases.'],
-    tags: ['Kyiv, Ukraine'],
   },
 ];
 
-export const projectsData = [
+export interface ProjectEntry {
+  id: string;
+  categories: string[];
+  company: string;
+  technologies: string[];
+  images?: string[];
+  websiteUrl?: string;
+}
+
+export const projectsData: ProjectEntry[] = [
   {
-    categories: ['Websites'],
-    title: 'Landing Page',
+    id: 'zon',
+    categories: ['websites'],
     company: 'ZonArt 🇬🇧',
-    description:
-      'ZON designs modern modular houses with smart architecture, fast delivery, and full customization.',
-    fullDescription:
-      'Developed a landing page for a modular house company, showcasing their innovative designs and services. The site features a clean, modern design with interactive elements to engage visitors and drive conversions. Implemented responsive design to ensure optimal viewing across all devices.',
     technologies: ['WordPress'],
-    role: 'Lead Developer',
     images: [
       '/krechetov-cv/projects/zon/zon1.jpg',
       '/krechetov-cv/projects/zon/zon2.jpg',
@@ -238,14 +213,10 @@ export const projectsData = [
     websiteUrl: 'https://zon-group.com/invest/',
   },
   {
-    categories: ['Websites', 'UI / UX'],
-    title: 'Corporate Website',
+    id: 'umzugsprofi',
+    categories: ['websites', 'ui_ux'],
     company: 'UmzugsProfi 🇩🇪',
-    description: 'High-performance online store with custom checkout flows.',
-    fullDescription:
-      'Built a WordPress website for a moving company, presenting their services and coverage areas. The site features a contact form for quote requests, clean layout optimized for trust and conversions, and full SEO configuration including meta tags, schema markup, and page speed optimization. Implemented responsive design for seamless browsing on all devices.',
     technologies: ['WordPress', 'SEO'],
-    role: 'Lead Developer, Designer',
     images: [
       '/krechetov-cv/projects/umzugsprofi/umzug1.jpeg',
       '/krechetov-cv/projects/umzugsprofi/umzug2.jpeg',
@@ -256,14 +227,10 @@ export const projectsData = [
     websiteUrl: 'https://umzugsprofi.net/',
   },
   {
-    categories: ['Websites'],
-    title: 'Orders CRM',
+    id: 'talentInsightCrm',
+    categories: ['websites'],
     company: 'TalentInsight 🇨🇳🇩🇪',
-    description: 'High-performance CRM  with custom flows',
-    fullDescription:
-      'TalentInsight Orders CRM — a web-based CRM for managing orders, clients, and trainers in the corporate training industry. Features include a sales analytics dashboard, session calendar, PDF invoice generation, role-based access control, and multi-currency support. Stack: React 19, TypeScript, Tailwind CSS, AWS (Cognito, API Gateway, Lambda, DynamoDB, S3), Vite',
     technologies: ['React', 'TS', 'AWS'],
-    role: 'FullStack Developer',
     images: [
       '/krechetov-cv/projects/ti/ti1.jpg',
       '/krechetov-cv/projects/ti/ti2.jpg',
@@ -272,25 +239,17 @@ export const projectsData = [
     ],
   },
   {
-    categories: ['Bots'],
-    title: 'Management Bot',
+    id: 'tccBot',
+    categories: ['bots'],
     company: 'TCC 🇺🇦',
-    description: 'Telegram bot for managing YouTube production teams',
-    fullDescription:
-      'Built a Telegram bot using Telethon for managing YouTube content production teams — a role-based workflow system that coordinates managers, screenwriters, cameramen, editors, and thumbnail designers across multiple channels. Features include task assignment with deadlines and per-task pricing, an automated reminder system with escalating notifications (6h/4h/2h/1h/30min before due), salary and bonus tracking with multi-currency support (USD/UAH), expense logging per channel, and a quality-control mistake log linking errors back to specific tasks, videos, and responsible team members.',
     technologies: ['Python', 'Telegram API', 'Telethon', 'SQLite'],
-    role: 'Backend Developer',
     images: ['/krechetov-cv/blue-element.png'],
   },
   {
-    categories: ['Bots'],
-    title: 'Random Restaurant Picker',
+    id: 'restomania',
+    categories: ['bots'],
     company: 'Restomania',
-    description: 'Telegram bot for discovering random restaurant',
-    fullDescription:
-      'Built a Telegram bot for 4,000+ users using Telethon for discovering random restaurants based on user-selected filters — region, price range, cuisine type, and rating. Features include a gamification system where users earn points through activity in a linked Telegram channel, a referral program for organic growth, built-in giveaway management for launching and running contests, and a broadcast system for sending targeted messages to users.',
     technologies: ['Python', 'Telegram API', 'Telethon', 'SQLite'],
-    role: 'Backend Developer',
     images: ['/krechetov-cv/blue-element.png'],
     websiteUrl: 'https://t.me/randomRestoBot',
   },

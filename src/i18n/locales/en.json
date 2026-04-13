@@ -1,0 +1,219 @@
+{
+  "header": {
+    "nav": {
+      "about": "About",
+      "skills": "Skills",
+      "experience": "Experience",
+      "projects": "Projects",
+      "contact": "Contact"
+    },
+    "followMe": "Follow me",
+    "langToggle": {
+      "en": "En",
+      "de": "De"
+    }
+  },
+  "footer": {
+    "followMe": "Follow me:"
+  },
+  "hero": {
+    "greeting": "Hey, I'm",
+    "name": "Dmytro",
+    "subtitle": "A web developer passionate about building digital experiences that actually deliver results",
+    "scroll": "Scroll"
+  },
+  "about": {
+    "p1": "I'm a <1>web developer</1> focused on building responsive, user-friendly websites using modern technologies.",
+    "p2": "I enjoy turning ideas into clean, efficient code and always strive to create <1>smooth digital experiences</1>."
+  },
+  "journey": {
+    "title": "Explore My Developer <1>Journey</1>",
+    "subtitle": "Over the past 4 years, I've collaborated with diverse teams and clients on a wide range of projects — turning creative ideas into impactful digital experiences.",
+    "tabs": {
+      "work": "Work",
+      "education": "Education"
+    }
+  },
+  "projects": {
+    "title": "See What I've <1>Built</1>",
+    "subtitle": "A showcase of my best work — crafted with creativity, strategy, and attention to detail.",
+    "categories": {
+      "websites": "Websites",
+      "ui_ux": "UI / UX",
+      "bots": "Bots"
+    },
+    "modal": {
+      "overview": "Overview",
+      "role": "Role",
+      "techStack": "Tech Stack",
+      "visitWebsite": "Visit Website ↗",
+      "viewCode": "View Code"
+    }
+  },
+  "skills": {
+    "tabs": {
+      "skills": "Skills",
+      "services": "Services"
+    },
+    "modal": {
+      "allSkills": "All Skills",
+      "allServices": "All Services"
+    },
+    "categories": {
+      "programming": "Programming",
+      "designTools": "Design & Tools",
+      "languages": "Languages",
+      "softSkills": "Soft Skills"
+    },
+    "groups": {
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "infrastructure": "Infrastructure",
+      "uiUx": "UI/UX",
+      "tools": "Tools",
+      "native": "Native",
+      "fluent": "Fluent",
+      "basic": "Basic"
+    },
+    "items": {
+      "webMobileInterfaces": "Web & Mobile Interfaces",
+      "wireframes": "Wireframes",
+      "prototypes": "Prototypes",
+      "designSystems": "Design Systems",
+      "userFlows": "User Flows",
+      "ukrainian": "Ukrainian",
+      "russian": "Russian",
+      "germanC1": "German — C1",
+      "englishB2": "English — B2",
+      "polishA2": "Polish — A2",
+      "analyticalThinking": "Analytical Thinking",
+      "independentWork": "Independent Work",
+      "remoteTeamwork": "Remote Teamwork",
+      "quickLearner": "Quick Learner"
+    }
+  },
+  "services": {
+    "webDev": {
+      "area": "Web Development",
+      "type": "Full Cycle",
+      "description": [
+        "Frontend & Backend development",
+        "Responsive websites & landing pages",
+        "CRM & internal tools",
+        "Performance optimization"
+      ]
+    },
+    "cloud": {
+      "area": "Cloud & Infrastructure",
+      "type": "AWS",
+      "description": [
+        "Serverless architecture (Lambda, API Gateway)",
+        "Database setup (DynamoDB, PostgreSQL)",
+        "Authentication (Cognito)",
+        "Docker containerization"
+      ]
+    },
+    "uiux": {
+      "area": "UI/UX Design",
+      "type": "Product Design",
+      "description": [
+        "Prototypes & Wireframes",
+        "Design Systems",
+        "Web & Mobile Interfaces"
+      ]
+    },
+    "automation": {
+      "area": "Automation",
+      "type": "Bots & Integrations",
+      "description": [
+        "Telegram bots",
+        "CRM integrations",
+        "AI-powered data pipelines",
+        "Workflow automation"
+      ]
+    }
+  },
+  "experience": {
+    "now": "Now",
+    "aplora": {
+      "position": "Full-Stack Developer",
+      "description": [
+        "Building a full-stack AI-powered call analysis platform with React, FastAPI, LangGraph, and PostgreSQL. Interactive dashboards for funnel analytics and call evaluation. Containerized infrastructure with Docker Compose."
+      ]
+    },
+    "talentInsight": {
+      "position": "Web Developer",
+      "description": [
+        "Developed an internal CRM with React, TypeScript, and Tailwind — RBAC system with role-based data filtering. Designed and built a serverless AWS backend (Lambda, DynamoDB, API Gateway, Cognito). Sole developer responsible for the entire technical implementation."
+      ]
+    },
+    "freelance": {
+      "position": "Web Developer",
+      "description": [
+        "Delivered client projects from concept to deployment — websites, landing pages, and custom web applications. Built Telegram bots for automating internal client processes, reducing manual effort by ~60%."
+      ]
+    },
+    "noer": {
+      "position": "Frontend Developer",
+      "description": [
+        "Developed a SPA news & analytics platform with Vue, Vuex, and TypeScript in an international Scrum team. Built custom LMS modules on Adobe Captivate Prime API using Quasar Framework for 3+ tenants. Maintained and extended a Storybook component library."
+      ]
+    }
+  },
+  "education": {
+    "wsnsib": {
+      "degree": "Bachelor's in Internal Security (thesis pending)",
+      "description": ["Internal Security"],
+      "city": "Łódź, Poland"
+    },
+    "krok": {
+      "degree": "Junior Specialist Degree in Software Engineering",
+      "description": ["Specialized in development of web applications and databases."],
+      "city": "Kyiv, Ukraine"
+    }
+  },
+  "projectsData": {
+    "zon": {
+      "title": "Landing Page",
+      "description": "ZON designs modern modular houses with smart architecture, fast delivery, and full customization.",
+      "fullDescription": "Developed a landing page for a modular house company, showcasing their innovative designs and services. The site features a clean, modern design with interactive elements to engage visitors and drive conversions. Implemented responsive design to ensure optimal viewing across all devices.",
+      "role": "Lead Developer"
+    },
+    "umzugsprofi": {
+      "title": "Corporate Website",
+      "description": "High-performance online store with custom checkout flows.",
+      "fullDescription": "Built a WordPress website for a moving company, presenting their services and coverage areas. The site features a contact form for quote requests, clean layout optimized for trust and conversions, and full SEO configuration including meta tags, schema markup, and page speed optimization. Implemented responsive design for seamless browsing on all devices.",
+      "role": "Lead Developer, Designer"
+    },
+    "talentInsightCrm": {
+      "title": "Orders CRM",
+      "description": "High-performance CRM with custom flows.",
+      "fullDescription": "TalentInsight Orders CRM — a web-based CRM for managing orders, clients, and trainers in the corporate training industry. Features include a sales analytics dashboard, session calendar, PDF invoice generation, role-based access control, and multi-currency support. Stack: React 19, TypeScript, Tailwind CSS, AWS (Cognito, API Gateway, Lambda, DynamoDB, S3), Vite.",
+      "role": "FullStack Developer"
+    },
+    "tccBot": {
+      "title": "Management Bot",
+      "description": "Telegram bot for managing YouTube production teams.",
+      "fullDescription": "Built a Telegram bot using Telethon for managing YouTube content production teams — a role-based workflow system that coordinates managers, screenwriters, cameramen, editors, and thumbnail designers across multiple channels. Features include task assignment with deadlines and per-task pricing, an automated reminder system with escalating notifications (6h/4h/2h/1h/30min before due), salary and bonus tracking with multi-currency support (USD/UAH), expense logging per channel, and a quality-control mistake log linking errors back to specific tasks, videos, and responsible team members.",
+      "role": "Backend Developer"
+    },
+    "restomania": {
+      "title": "Random Restaurant Picker",
+      "description": "Telegram bot for discovering random restaurants.",
+      "fullDescription": "Built a Telegram bot for 4,000+ users using Telethon for discovering random restaurants based on user-selected filters — region, price range, cuisine type, and rating. Features include a gamification system where users earn points through activity in a linked Telegram channel, a referral program for organic growth, built-in giveaway management for launching and running contests, and a broadcast system for sending targeted messages to users.",
+      "role": "Backend Developer"
+    }
+  },
+  "collaborate": {
+    "title": "Let's <1>Collaborate</1>",
+    "intro": "Ready to elevate your digital game? I combine creative thinking and technical expertise to help businesses build stronger digital experiences that convert.",
+    "cta": "Get in touch",
+    "modalTitle": "Get in <1>Touch</1>",
+    "languageNote": "Feel free to reach out in English, German, Ukrainian, or Russian.",
+    "myRole": "Web Developer",
+    "emailMe": "Email me",
+    "emailDesc": "Happy to answer any questions",
+    "telegram": "Telegram",
+    "telegramDesc": "Quick response via messenger"
+  }
+}

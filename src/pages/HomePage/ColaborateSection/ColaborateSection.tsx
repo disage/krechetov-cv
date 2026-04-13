@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import { Trans, useTranslation } from 'react-i18next';
 import './ColaborateSection.scss';
 import Button from '../../../components/ui/Button/Button';
 import Modal from '../../../components/elements/ColaborateModal/ColaborateModal';
@@ -8,6 +9,7 @@ import GithubIcon from '../../../assets/github.svg?react';
 import LinkedinIcon from '../../../assets/linkedin.svg?react';
 
 const ColaborateSection = () => {
+  const { t } = useTranslation();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
@@ -20,17 +22,14 @@ const ColaborateSection = () => {
       transition={{ duration: 0.8, ease: 'easeOut' }}
     >
       <h2>
-        Let's <span className='highlighted'>Collaborate</span>
+        <Trans i18nKey='collaborate.title' components={{ 1: <span className='highlighted' /> }} />
       </h2>
-      <p>
-        Ready to elevate your digital game? I combine creative thinking and technical expertise to
-        help businesses build stronger digital experiences that convert.
-      </p>
+      <p>{t('collaborate.intro')}</p>
       <div className='colaborate-section-action'>
         <div className='colaborate-section-action-bg'></div>
         <Button
           className='colaborate-button'
-          children='Get in touch'
+          children={t('collaborate.cta')}
           variant='outline'
           onClick={(e) => {
             e.preventDefault();
@@ -43,16 +42,16 @@ const ColaborateSection = () => {
         <div className='modal-col modal-col--left'>
           <div>
             <h2>
-              Get in <span className='highlighted'>Touch</span>
+              <Trans i18nKey='collaborate.modalTitle' components={{ 1: <span className='highlighted' /> }} />
             </h2>
-            <p>Feel free to reach out in English, German, Ukrainian, or Russian.</p>
+            <p>{t('collaborate.languageNote')}</p>
             <div className='row'>
               <div className='my-avatar'>
                 <img src='/krechetov-cv/avatar.jpg' alt='Dmytro Krechetov' />
               </div>
               <div className='my-description col'>
                 <span className='my-name'>Dmytro Krechetov</span>
-                <span className='my-role'>Web Developer</span>
+                <span className='my-role'>{t('collaborate.myRole')}</span>
               </div>
             </div>
           </div>
@@ -109,9 +108,9 @@ const ColaborateSection = () => {
                   />
                 </svg>
               </div>
-              <h3>Email me</h3>
+              <h3>{t('collaborate.emailMe')}</h3>
               <span className='contact-card-value'>krechetov52@gmail.com</span>
-              <span className='contact-card-desc'>Happy to answer any questions</span>
+              <span className='contact-card-desc'>{t('collaborate.emailDesc')}</span>
             </a>
 
             <a
@@ -144,9 +143,9 @@ const ColaborateSection = () => {
                   />
                 </svg>
               </div>
-              <h3>Telegram</h3>
+              <h3>{t('collaborate.telegram')}</h3>
               <span className='contact-card-value'>@krechetov_dev</span>
-              <span className='contact-card-desc'>Quick response via messenger</span>
+              <span className='contact-card-desc'>{t('collaborate.telegramDesc')}</span>
             </a>
           </div>
         </div>

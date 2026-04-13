@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
+import { useTranslation } from 'react-i18next';
 
 interface Project {
   categories: string[];
@@ -21,6 +22,7 @@ interface ProjectModalProps {
 }
 
 const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose }) => {
+  const { t } = useTranslation();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   useEffect(() => {
@@ -52,6 +54,10 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
     }
   };
 
+  const categoryLabels = project.categories
+    .map((id) => t(`projects.categories.${id}`))
+    .join(', ');
+
   return ReactDOM.createPortal(
     <div className='project-modal-overlay' onClick={onClose}>
       <div className='project-modal-container' onClick={(e) => e.stopPropagation()}>
@@ -62,7 +68,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
         <div className='modal-hero'>
           <div className='modal-hero-content'>
             <div className='modal-hero-info'>
-              <span className='modal-category'>{project.categories.join(', ')}</span>
+              <span className='modal-category'>{categoryLabels}</span>
               <h2 className='modal-title'>{project.title}</h2>
               <p className='modal-company'>{project.company}</p>
             </div>
@@ -75,7 +81,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
                   rel='noopener noreferrer'
                   className='action-btn primary'
                 >
-                  Visit Website ↗
+                  {t('projects.modal.visitWebsite')}
                 </a>
               )}
               {project.githubUrl && (
@@ -85,7 +91,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
                   rel='noopener noreferrer'
                   className='action-btn secondary'
                 >
-                  View Code
+                  {t('projects.modal.viewCode')}
                 </a>
               )}
             </div>
@@ -153,17 +159,17 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
           )}
 
           <div className='modal-section'>
-            <h3>Overview</h3>
+            <h3>{t('projects.modal.overview')}</h3>
             <p>{project.fullDescription}</p>
           </div>
 
           <div className='modal-meta-grid'>
             <div className='meta-item'>
-              <span className='meta-label'>Role</span>
+              <span className='meta-label'>{t('projects.modal.role')}</span>
               <span className='meta-value'>{project.role}</span>
             </div>
             <div className='meta-item'>
-              <span className='meta-label'>Tech Stack</span>
+              <span className='meta-label'>{t('projects.modal.techStack')}</span>
               <div className='tech-tags'>
                 {project.technologies.map((tech, index) => (
                   <span key={index} className='tech-tag'>

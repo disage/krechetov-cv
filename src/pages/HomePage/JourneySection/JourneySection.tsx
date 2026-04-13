@@ -1,19 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { Trans, useTranslation } from 'react-i18next';
 import './JourneySection.scss';
-import { experienceData, educationData } from '../../../constants';
+import { useLocalizedExperience, useLocalizedEducation } from '../../../hooks/useLocalizedData';
 import Tabs from '../../../components/ui/Tabs/Tabs';
 
-const JOURNEY_TABS = [
-  { label: 'Work', value: 'work' },
-  { label: 'Education', value: 'education' },
-];
-
 const JourneySection: React.FC = () => {
+  const { t } = useTranslation();
+  const experience = useLocalizedExperience();
+  const education = useLocalizedEducation();
+
+  const journeyTabs = [
+    { label: t('journey.tabs.work'), value: 'work' },
+    { label: t('journey.tabs.education'), value: 'education' },
+  ];
+
   const [activeTab, setActiveTab] = useState('work');
   const [selectedIndex, setSelectedIndex] = useState(0);
 
-  const currentData = activeTab === 'work' ? experienceData : educationData;
+  const currentData = activeTab === 'work' ? experience : education;
   // Safe check to prevent crash when switching tabs if previous index > new data length
   const safeIndex = selectedIndex >= currentData.length ? 0 : selectedIndex;
   const selectedItem = currentData[safeIndex];
@@ -25,7 +30,7 @@ const JourneySection: React.FC = () => {
   return (
     <section className='journey-section' id='experience'>
       <div className='journey-container'>
-        <motion.div 
+        <motion.div
           className='journey-header'
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -33,21 +38,18 @@ const JourneySection: React.FC = () => {
           transition={{ duration: 0.8, ease: 'easeOut' }}
         >
           <h2 className='journey-title'>
-            Explore My Developer <span className='highlight'>Journey</span>
+            <Trans i18nKey='journey.title' components={{ 1: <span className='highlight' /> }} />
           </h2>
-          <p className='journey-subtitle'>
-            Over the past 4 years, I've collaborated with diverse teams and clients on a wide range
-            of projects — turning creative ideas into impactful digital experiences.
-          </p>
+          <p className='journey-subtitle'>{t('journey.subtitle')}</p>
 
           <Tabs
-            tabs={JOURNEY_TABS}
+            tabs={journeyTabs}
             activeTab={activeTab}
             onTabChange={setActiveTab}
           />
         </motion.div>
 
-        <motion.div 
+        <motion.div
           className='journey-content'
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -57,7 +59,7 @@ const JourneySection: React.FC = () => {
           <div className='journey-sidebar'>
             {currentData.map((item, index) => (
               <div
-                key={index}
+                key={item.id}
                 className={`journey-sidebar-item ${index === selectedIndex ? 'active' : ''}`}
                 onClick={() => setSelectedIndex(index)}
               >
@@ -76,7 +78,7 @@ const JourneySection: React.FC = () => {
               </h3>
               <span className='details-period'>{selectedItem.period}</span>
             </div>
-            
+
             <div className='details-role'>
               {activeTab === 'work' ? (selectedItem as any).position : (selectedItem as any).degree}
             </div>

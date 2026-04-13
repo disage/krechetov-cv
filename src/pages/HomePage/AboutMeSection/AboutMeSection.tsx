@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { Trans } from 'react-i18next';
 import './AboutMeSection.scss';
 
 const AboutMeSection = () => {
@@ -11,12 +12,10 @@ const AboutMeSection = () => {
         transition={{ duration: 0.8, ease: 'easeOut' }}
       >
         <p>
-          I'm a <span className='highlighted'>web developer</span> focused on building responsive,
-          user-friendly websites using modern technologies.
+          <Trans i18nKey='about.p1' components={{ 1: <span className='highlighted' /> }} />
         </p>
         <p>
-          I enjoy turning ideas into clean, efficient code and always strive to create
-          <span className='highlighted'> smooth digital experiences</span>.
+          <Trans i18nKey='about.p2' components={{ 1: <span className='highlighted' /> }} />
         </p>
       </motion.div>
     </section>
