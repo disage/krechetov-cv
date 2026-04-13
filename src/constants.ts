@@ -275,9 +275,9 @@ export const projectsData = [
     categories: ['Bots'],
     title: 'Management Bot',
     company: 'TCC 🇺🇦',
-    description: 'AI-powered Telegram bot for automated customer inquiries.',
+    description: 'Telegram bot for managing YouTube production teams',
     fullDescription:
-      'Developed an intelligent telegram bot to handle common customer support queries, reducing support ticket volume by 30%. The bot uses natural language processing to understand user intent and provides instant answers or routes complex issues to human agents.',
+      'Built a Telegram bot using Telethon for managing YouTube content production teams — a role-based workflow system that coordinates managers, screenwriters, cameramen, editors, and thumbnail designers across multiple channels. Features include task assignment with deadlines and per-task pricing, an automated reminder system with escalating notifications (6h/4h/2h/1h/30min before due), salary and bonus tracking with multi-currency support (USD/UAH), expense logging per channel, and a quality-control mistake log linking errors back to specific tasks, videos, and responsible team members.',
     technologies: ['Python', 'Telegram API', 'Telethon', 'SQLite'],
     role: 'Backend Developer',
     images: ['/krechetov-cv/blue-element.png'],
@@ -288,7 +288,7 @@ export const projectsData = [
     company: 'Restomania',
     description: 'Telegram bot for discovering random restaurant',
     fullDescription:
-      'Built a Telegram bot using Telethon for discovering random restaurants based on user-selected filters — region, price range, cuisine type, and rating. Features include a gamification system where users earn points through activity in a linked Telegram channel, a referral program for organic growth, built-in giveaway management for launching and running contests, and a broadcast system for sending targeted messages to users.',
+      'Built a Telegram bot for 4,000+ users using Telethon for discovering random restaurants based on user-selected filters — region, price range, cuisine type, and rating. Features include a gamification system where users earn points through activity in a linked Telegram channel, a referral program for organic growth, built-in giveaway management for launching and running contests, and a broadcast system for sending targeted messages to users.',
     technologies: ['Python', 'Telegram API', 'Telethon', 'SQLite'],
     role: 'Backend Developer',
     images: ['/krechetov-cv/blue-element.png'],
